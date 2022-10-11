@@ -40,5 +40,10 @@ public class CustomerController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
+    @PutMapping("/{id}")
+    ResponseEntity<Customer> updateCustomerById(@PathVariable Long id, @RequestBody Customer customer){
+        if(customerRepository.findById(id).isPresent()) return new ResponseEntity<>(customerRepository.save(customer), HttpStatus.OK);
+        return new ResponseEntity(customerRepository.save(customer), HttpStatus.CREATED) ;
+    }
 
 }
