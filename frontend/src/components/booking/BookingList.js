@@ -7,13 +7,11 @@ const BookingList = ({bookings}) => {
     const bookingsNodes = bookings.map((booking, index) => {
             return <Booking booking = {booking} key = {index} />
     })
-
-
-
+    
     return(
         <>
             <table>
-        {bookingsNodes}
+                {bookingsNodes}
             </table>
         </>
     )

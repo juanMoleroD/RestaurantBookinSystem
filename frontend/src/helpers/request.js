@@ -6,15 +6,13 @@ class Request {
            
     }
 
-    post(url, payload){
+    post(url, payload) {
         return fetch(url, {
             method: "POST",
-            headers: {'Content-type': 'application/json'},
+            headers: {"Content-type": "application/json" },
             body: JSON.stringify(payload)
-        })
-        }
-
+        });
+    }
 }
-
 
 export default Request;
