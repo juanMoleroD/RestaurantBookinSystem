@@ -1,4 +1,5 @@
 import React from "react";
+import Booking from "./Booking";
 
 
 const BookingList = ({bookings}) => {
