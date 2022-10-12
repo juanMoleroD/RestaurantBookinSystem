@@ -11,8 +11,6 @@ const BookingForm = () => {
     });
 
     const handleChange = (event) => {
-        console.log("handle change triggered")
-        console.log(event)
         const propertyName = event.target.name;
         const copyOfBooking = {... booking};
         copyOfBooking[propertyName] = event.target.value;
@@ -57,7 +55,7 @@ const BookingForm = () => {
                 <label>Time</label>
                 <input type="time" name="time" value={booking.time} onChange={handleChange}/>
                 <label>Customer</label>
-                <select name="customer" onChange={handleCustomerSelection}>
+                <select name="customer" defaultValue={"select-customer"} onChange={handleCustomerSelection}>
                     <option disabled value="select-customer">Select Customer</option>
                     {customerOptions}
                 </select>
