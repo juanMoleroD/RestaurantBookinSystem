@@ -19,6 +19,9 @@ const NavBar = () => {
                         <a href="/customers" >Customers</a>
                     </li>
                     <li>
+                        <a href="/customers/new">New Customer</a>
+                    </li>
+                    <li>
                         <a href="/bookings/new">New booking</a>
                     </li>
                 </ul>

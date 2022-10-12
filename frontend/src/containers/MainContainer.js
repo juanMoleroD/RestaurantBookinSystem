@@ -13,7 +13,8 @@ const MainContainer = () => {
             <Routes>
                 <Route path="/bookings/*" element={<BookingContainer />} />
                 <Route path ="/customers/*" element={<CustomerContainer />} />
-
+                {/* <Route path="/customers/new" element={<CustomerForm/>} />
+                <Route path="/bookings/new" element={<BookingForm/>} /> */}
 
             </Routes>
 
