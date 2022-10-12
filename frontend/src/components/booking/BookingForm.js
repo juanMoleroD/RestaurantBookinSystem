@@ -29,7 +29,7 @@ const BookingForm = () => {
     }, []);
 
     const customerOptions = customers.map((customer, index) => {
-            return <option value={customer} key={index}>{customer.name}</option>
+            return <option value={index} key={index}>{customer.name}</option>
     });
 
     const handleSubmit = (event) => {
@@ -42,7 +42,7 @@ const BookingForm = () => {
 
     const handleCustomerSelection = (event) => {
         const copyOfBooking = {... booking};
-        copyOfBooking.customer = event.target.value;
+        copyOfBooking.customer = customers[event.target.value]        
         setBooking(copyOfBooking);
     }
 
