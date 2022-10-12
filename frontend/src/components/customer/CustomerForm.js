@@ -1,16 +1,43 @@
-import React from "react";
-import { Form } from "react-bootstrap";
 
-const CustomerForm = ({booking}) => {
+import React, {useState} from "react";
+import Request from "../../helpers/request";
 
-    return(
+const CustomerForm = () => {
 
-        <Form>
+    const [customer, setCustomer] = useState({
+        name: ""
+    });
 
-        <label></label>
-        <input></input>
+    const onChange = (event) => {
+        const targetName = event.target.name;
+        const copyCustomer = {...customer};
+        copyCustomer[targetName] = event.target.value;
+        setCustomer(copyCustomer)
+    }
 
-        </Form>
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const request = new Request();
+        request.post('/api/customers', {
+            name: event.target.name.value
+        })
+            .then(() => {
+                window.location = '/customers'
+            })
+    }
+
+    return (
+
+        <div>
+            <form onSubmit={handleSubmit}>
+                <label><b>Name</b></label>
+                <input type="text" placeholder="Name" name="name" value={customer.name} onChange ={onChange} />
+                <button type="submit"> Save </button>
+            </form>
+
+        </div>
+
     )
 }
 

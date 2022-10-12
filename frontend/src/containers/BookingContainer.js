@@ -7,6 +7,8 @@ import CustomerForm from "../components/customer/CustomerForm";
 
 const BookingContainer = () =>{
 
+   
+
     const [bookings, setBookings] = useState([]);
 
     useEffect (()=> {
@@ -17,6 +19,8 @@ const BookingContainer = () =>{
             setBookings(data)
         });
     }, []);
+
+        
 
 
 
