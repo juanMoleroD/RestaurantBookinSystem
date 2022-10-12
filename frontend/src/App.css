@@ -17,3 +17,7 @@
 #main-navbar > ul > li {
   padding: 6px;
 }
+
+a:any-link {
+  color: white;
+}

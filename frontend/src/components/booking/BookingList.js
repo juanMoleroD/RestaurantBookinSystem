@@ -8,12 +8,10 @@ const BookingList = ({bookings}) => {
             return <Booking booking = {booking} key = {index} />
     })
 
-
-
     return(
         <>
             <table>
-        {bookingsNodes}
+                {bookingsNodes}
             </table>
         </>
     )

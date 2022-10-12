@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import NavBar from "../NavBar";
 import BookingContainer from "./BookingContainer";
 import CustomerContainer from "./CustomerContainer";
+import BookingForm from "../components/booking/BookingForm";
 
 const MainContainer = () => {
 
