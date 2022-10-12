@@ -3,6 +3,7 @@ class Request {
     async get(url) {
         const response = await fetch(url);
         return response.json();
+           
     }
 
     post(url, payload) {
@@ -12,7 +13,6 @@ class Request {
             body: JSON.stringify(payload)
         });
     }
-
 }
 
 export default Request;
