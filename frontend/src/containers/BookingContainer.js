@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Request from "../helpers/request";
-import BookingList from "../components/BookingList";
+import BookingList from "../components/booking/BookingList";
+import CustomerForm from "../components/customer/CustomerForm";
 
 
 
