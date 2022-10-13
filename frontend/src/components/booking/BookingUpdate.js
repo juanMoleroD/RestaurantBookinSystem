@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from "react";
 import Request from "../../helpers/request";
 
-const BookingForm = () => {
 
+const BookingUpdate = () => {
+
+    
     const [booking, setBooking] = useState({
-        tableNumber: 0,
-        date: "",
-        time: "",
-        customer: null
+        id: booking.id,
+        tableNumber: booking.tableNumber,
+        date: booking.date,
+        time: booking.time,
+        customer: booking.customer
     });
 
     const handleChange = (event) => {
@@ -33,7 +36,7 @@ const BookingForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const request = new Request();
-        request.post("/api/bookings", booking)
+        request.put("/api/bookings", booking)
         .then(() => {
             window.location = '/bookings'
         });
@@ -49,6 +52,7 @@ const BookingForm = () => {
 
     return (
         <>
+        <h2>Update</h2>
             <form onSubmit={handleSubmit}>
                 <label>Table Number</label>
                 <input type="number" name="tableNumber" value={booking.tableNumber} onChange={handleChange}/>
@@ -68,4 +72,4 @@ const BookingForm = () => {
 
 }
 
-export default BookingForm;
+export default BookingUpdate;

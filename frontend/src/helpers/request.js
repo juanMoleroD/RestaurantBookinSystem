@@ -13,6 +13,16 @@ class Request {
             body: JSON.stringify(payload)
         });
     }
+
+    put(url, payload) {
+        return fetch(url, {
+            method: "PUT",
+            headers: {"Content-type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+    }
+
+
 }
 
 export default Request;

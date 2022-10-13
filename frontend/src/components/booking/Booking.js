@@ -1,6 +1,7 @@
 import React from "react";
 
 
+
 const Booking = ({booking}) => {
 
 
@@ -12,6 +13,7 @@ const Booking = ({booking}) => {
                <p>{booking.date}</p> 
                <p>{booking.time}</p> 
                <p>{booking.customer.name}</p>
+               <p><a href="/id"> <b>Update</b></a></p>
             </>
         )
 

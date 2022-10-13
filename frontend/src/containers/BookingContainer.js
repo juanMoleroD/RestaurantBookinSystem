@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import Request from "../helpers/request";
 import BookingList from "../components/booking/BookingList";
 import CustomerForm from "../components/customer/CustomerForm";
+import { Route, Routes } from 'react-router-dom';
+import BookingForm from "../components/booking/BookingForm";
+import BookingUpdate from "../components/booking/BookingUpdate";
 
 
 
@@ -16,21 +19,19 @@ const BookingContainer = () =>{
         const request = new Request();
         request.get('/api/bookings')
         .then (data => {
-            console.log(data)
             setBookings(data)
         });
     }, []);
 
-        
-
-
-
-
+    
     return(
 
-        <>
-            <BookingList bookings={bookings}/>
-        </>
+        <Routes>
+            <Route path="/" element={<BookingList bookings={bookings}/>}/>
+            <Route path="/new" element={<BookingForm/>} />
+            <Route path="/update" element={<BookingUpdate/>}/>
+         
+        </Routes>
     )
 }
 

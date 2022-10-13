@@ -1,5 +1,6 @@
 import React from "react";
 import Customer from "./Customer";
+import '../customer/customer-css.css'
 
 const CustomerList = ({customers}) => {
 
@@ -13,7 +14,7 @@ const CustomerList = ({customers}) => {
 
     return (
         <>
-            <table>
+            <table className="customer-table">
                 {customerNodes}
             </table>
         </>

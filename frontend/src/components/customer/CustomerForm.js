@@ -19,9 +19,7 @@ const CustomerForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const request = new Request();
-        request.post('/api/customers', {
-            name: event.target.name.value
-        })
+        request.post('/api/customers', customer)
             .then(() => {
                 window.location = '/customers'
             })
