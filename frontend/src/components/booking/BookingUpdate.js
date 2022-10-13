@@ -1,21 +1,24 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Request from "../../helpers/request";
+import { useParams } from "react-router-dom";
 
 
 const BookingUpdate = () => {
 
-    
-    const [booking, setBooking] = useState({
-        id: booking.id,
-        tableNumber: booking.tableNumber,
-        date: booking.date,
-        time: booking.time,
-        customer: booking.customer
-    });
+
+    const { id } = useParams();
+
+    const [booking, setBooking] = useState({});
+
+    useEffect(() => {
+        const request = new Request();
+        request.get('/api/bookings/' + id)
+            .then(data => setBooking(data));
+    }, []);
 
     const handleChange = (event) => {
         const propertyName = event.target.name;
-        const copyOfBooking = {... booking};
+        const copyOfBooking = { ...booking };
         copyOfBooking[propertyName] = event.target.value;
         setBooking(copyOfBooking);
     }
@@ -26,46 +29,53 @@ const BookingUpdate = () => {
     useEffect(() => {
         const request = new Request();
         request.get('/api/customers')
-        .then(data => setCustomers(data));
+            .then(data => setCustomers(data));
     }, []);
 
-    const customerOptions = customers.map((customer, index) => {
-            return <option value={index} key={index}>{customer.name}</option>
-    });
+
+    
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const request = new Request();
         request.put("/api/bookings", booking)
-        .then(() => {
-            window.location = '/bookings'
-        });
-        
+            .then(() => {
+                window.location = '/bookings'
+            });
     }
 
     const handleCustomerSelection = (event) => {
-        const copyOfBooking = {... booking};
-        copyOfBooking.customer = customers[event.target.value]        
+        const copyOfBooking = { ...booking };
+        copyOfBooking.customer = customers[event.target.value]
         setBooking(copyOfBooking);
     }
 
+    // const getDefaultCustomer = () => {
+    //     return customerOptions.indexOf(booking.customer);
+    // }
 
-    return (
+
+    const customerOptions = customers.map((customer, index) => {
+        return <option value={customer.id} key={index}>{customer.name}</option>
+    });
+
+    return (Object.keys(booking).length == 0 || customers.length == 0) ? null: (
+
         <>
-        <h2>Update</h2>
+            <h2>Update</h2>
             <form onSubmit={handleSubmit}>
                 <label>Table Number</label>
-                <input type="number" name="tableNumber" value={booking.tableNumber} onChange={handleChange}/>
+                <input type="number" name="tableNumber" value={booking.tableNumber} onChange={handleChange} />
                 <label>Date</label>
-                <input type="date" name="date" value={booking.date} onChange={handleChange}/>
+                <input type="date" name="date" value={booking.date} onChange={handleChange} />
                 <label>Time</label>
-                <input type="time" name="time" value={booking.time} onChange={handleChange}/>
+                <input type="time" name="time" value={booking.time} onChange={handleChange} />
                 <label>Customer</label>
-                <select name="customer" defaultValue={"select-customer"} onChange={handleCustomerSelection}>
+                <select name="customer" defaultValue={booking.customer.id} onChange={handleCustomerSelection}>
                     <option disabled value="select-customer">Select Customer</option>
                     {customerOptions}
                 </select>
-                <input type="submit" value="Save"/>
+                <input type="submit" value="Save" />
             </form>
         </>
     )

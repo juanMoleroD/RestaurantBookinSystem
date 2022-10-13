@@ -29,7 +29,7 @@ const BookingContainer = () =>{
         <Routes>
             <Route path="/" element={<BookingList bookings={bookings}/>}/>
             <Route path="/new" element={<BookingForm/>} />
-            <Route path="/update" element={<BookingUpdate/>}/>
+            <Route path="/:id/edit" element={<BookingUpdate/>}/>
          
         </Routes>
     )

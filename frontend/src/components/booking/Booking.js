@@ -1,4 +1,5 @@
 import React from "react";
+import '../booking/booking.css'
 
 
 
@@ -7,14 +8,17 @@ const Booking = ({booking}) => {
 
 
         return(
-
-            <>
-               <p>{booking.tableNumber}</p> 
-               <p>{booking.date}</p> 
-               <p>{booking.time}</p> 
-               <p>{booking.customer.name}</p>
-               <p><a href="/id"> <b>Update</b></a></p>
-            </>
+            <tr>
+                <td>{booking.id}</td>
+                <td>{booking.customer.name}</td>
+                <td>{booking.tableNumber}</td>
+                <td>{booking.date}</td>
+                <td>{booking.time}</td>
+                
+                <td><button><a className="update-link" href={'/bookings/'+booking.id + '/edit'} >Update</a></button></td>
+                <td></td>
+            </tr>
+            
         )
 
 }
