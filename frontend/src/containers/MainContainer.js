@@ -9,18 +9,12 @@ const MainContainer = () => {
     return (
         <React.Fragment>
             <NavBar />
-
             <Routes>
-
-                <Route path="/bookings/*" element={<BookingContainer/>} />
-                <Route path ="/customers/*" element={<CustomerContainer/>} />
-                
+                <Route path="/bookings/*" element={<BookingContainer />} />
+                <Route path="/customers/*" element={<CustomerContainer />} />
             </Routes>
-
         </React.Fragment>
-
     )
-
 }
 
 export default MainContainer;

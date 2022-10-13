@@ -1,6 +1,6 @@
-
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Request from "../../helpers/request";
+
 
 const CustomerForm = () => {
 
@@ -10,19 +10,16 @@ const CustomerForm = () => {
 
     const onChange = (event) => {
         const targetName = event.target.name;
-        const copyCustomer = {...customer};
+        const copyCustomer = { ...customer };
         copyCustomer[targetName] = event.target.value;
         setCustomer(copyCustomer)
     }
-
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const request = new Request();
         request.post('/api/customers', customer)
-            .then(() => {
-                window.location = '/customers'
-            })
+            .then(() => window.location = '/customers')
     }
 
     return (
@@ -30,14 +27,11 @@ const CustomerForm = () => {
         <div>
             <form onSubmit={handleSubmit}>
                 <label><b>Name</b></label>
-                <input type="text" placeholder="Name" name="name" value={customer.name} onChange ={onChange} />
+                <input type="text" placeholder="Name" name="name" value={customer.name} onChange={onChange} />
                 <button type="submit"> Save </button>
             </form>
-
         </div>
-
     )
 }
-
 
 export default CustomerForm;

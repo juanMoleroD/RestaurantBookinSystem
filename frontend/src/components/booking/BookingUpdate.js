@@ -23,7 +23,6 @@ const BookingUpdate = () => {
         setBooking(copyOfBooking);
     }
 
-
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
@@ -32,13 +31,10 @@ const BookingUpdate = () => {
             .then(data => setCustomers(data));
     }, []);
 
-
-    
-
     const handleSubmit = (event) => {
         event.preventDefault();
         const request = new Request();
-        request.put("/api/bookings", booking)
+        request.put("/api/bookings/" + id, booking)
             .then(() => {
                 window.location = '/bookings'
             });
@@ -46,20 +42,15 @@ const BookingUpdate = () => {
 
     const handleCustomerSelection = (event) => {
         const copyOfBooking = { ...booking };
-        copyOfBooking.customer = customers[event.target.value]
+        copyOfBooking.customer = customers[event.target.value - 1]
         setBooking(copyOfBooking);
     }
-
-    // const getDefaultCustomer = () => {
-    //     return customerOptions.indexOf(booking.customer);
-    // }
-
 
     const customerOptions = customers.map((customer, index) => {
         return <option value={customer.id} key={index}>{customer.name}</option>
     });
 
-    return (Object.keys(booking).length == 0 || customers.length == 0) ? null: (
+    return (Object.keys(booking).length == 0 || customers.length == 0) ? null : (
 
         <>
             <h2>Update</h2>
