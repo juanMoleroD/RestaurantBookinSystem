@@ -10,9 +10,8 @@ const Booking = ({ booking }) => {
             <td>{booking.tableNumber}</td>
             <td>{booking.date}</td>
             <td>{booking.time}</td>
-
             <td><button><a className="update-link" href={'/bookings/' + booking.id + '/edit'} >Update</a></button></td>
-            <td></td>
+            {/* <td></td> */}
         </tr>
     )
 }
