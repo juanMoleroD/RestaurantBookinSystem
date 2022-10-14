@@ -2,14 +2,14 @@ import React from "react";
 import Customer from "./Customer";
 import '../customer/customer-css.css'
 
-const CustomerList = ({ customers }) => {
+const CustomerList = ({ customers, deleteCustomer }) => {
 
     if (!customers) {
         return <p> Loading... </p>
     }
 
     const customerNodes = customers.map((customer, index) => {
-        return <Customer customer={customer} key={index} />
+        return <Customer customer={customer} key={index} deleteCustomer={deleteCustomer} />
     })
 
     return (

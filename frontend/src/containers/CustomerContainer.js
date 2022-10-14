@@ -24,7 +24,7 @@ const CustomerContainer = () => {
                             customer.bookingCount = fulfilledPromises[index];
                             return customer;
                         })
-                        updatedCustomers.sort((a,b) =>  b.bookingCount - a.bookingCount);
+                        updatedCustomers.sort((a, b) => b.bookingCount - a.bookingCount);
                         setCustomers(updatedCustomers);
                     });
             });
@@ -35,13 +35,25 @@ const CustomerContainer = () => {
             .then(response => response.json());
     }
 
+    const deleteCustomer = (id) => {
+        const copyOfCustomers = [...customers]
+        let indexToDelete;
+        copyOfCustomers.forEach((customer, index) => {
+            if (customer.id == id) {
+                indexToDelete = index
+            }
+        })
+        copyOfCustomers.splice(indexToDelete, 1);
+        setCustomers(copyOfCustomers);
+    }
+
     return (
 
         <div>
             <Routes>
-                <Route path="/" element={<CustomerList customers={customers} />} />
+                <Route path="/" element={<CustomerList customers={customers}  deleteCustomer={deleteCustomer}/>} />
                 <Route path="/new" element={<CustomerForm />} />
-                <Route path="/:id/edit" element={<CustomerUpdate/>} />
+                <Route path="/:id/edit" element={<CustomerUpdate/> } />
             </Routes>
         </div>
     );

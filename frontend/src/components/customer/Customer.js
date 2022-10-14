@@ -1,8 +1,12 @@
 import React from "react";
+import Request from "../../helpers/request";
 
-const Customer = ({ customer }) => {
+const Customer = ({ customer, deleteCustomer }) => {
 
     const handleDelete = () => {
+        const request = new Request();
+        request.delete('/api/customers/' + customer.id);
+        deleteCustomer(customer.id);
 
     }
 

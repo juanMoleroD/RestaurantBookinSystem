@@ -5,7 +5,7 @@ import Request from "../../helpers/request";
 
 const CustomerUpdate = () => {
 
-    const {id} = useParams();
+    const { id } = useParams();
 
     const [customer, setCustomer] = useState({});
 
@@ -13,7 +13,6 @@ const CustomerUpdate = () => {
         const request = new Request();
         request.get('/api/customers/' + id)
             .then(data => {
-                console.log(data);
                 setCustomer(data);
             });
     }, []);
@@ -32,7 +31,7 @@ const CustomerUpdate = () => {
             .then(() => window.location = '/customers')
     }
 
-    return(Object.keys(customer).length == 0) ? null : (
+    return (Object.keys(customer).length == 0) ? null : (
         <div>
             <form onSubmit={handleSubmit}>
                 <label><b>Name</b></label>
