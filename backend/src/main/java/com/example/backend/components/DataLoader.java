@@ -4,12 +4,10 @@ import com.example.backend.models.Booking;
 import com.example.backend.models.Customer;
 import com.example.backend.repositories.BookingRepository;
 import com.example.backend.repositories.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.awt.*;
-import java.awt.print.Book;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
