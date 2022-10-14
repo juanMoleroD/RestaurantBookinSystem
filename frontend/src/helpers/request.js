@@ -20,6 +20,15 @@ class Request {
             body: JSON.stringify(payload)
         });
     }
+
+    delete(url) {
+        return fetch(url, {
+            method: "DELETE",
+            headers: {"Content-type": "application/json",
+            body: null
+         }
+        })
+    }
 }
 
 export default Request;

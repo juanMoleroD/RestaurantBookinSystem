@@ -15,11 +15,25 @@ const BookingContainer = () =>{
         request.get('/api/bookings')
         .then (data => setBookings(data));
     }, []);
+
+    const deleteBooking = (id) => {
+        const copyOfBookings = [...bookings]
+        let indexToDelete;
+        copyOfBookings.forEach((booking, index) => {
+            if(booking.id == id) {
+                indexToDelete = index
+            }
+        })
+        copyOfBookings.splice(indexToDelete, 1);
+        setBookings(copyOfBookings);
+    }
+
+
     
     return(
 
         <Routes>
-            <Route path="/" element={<BookingList bookings={bookings}/>}/>
+            <Route path="/" element={<BookingList bookings={bookings} deleteBooking={deleteBooking}/> }/>
             <Route path="/new" element={<BookingForm/>} />
             <Route path="/:id/edit" element={<BookingUpdate/>}/>
         </Routes>

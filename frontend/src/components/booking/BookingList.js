@@ -3,7 +3,7 @@ import Booking from "./Booking";
 import Request from "../../helpers/request";
 import { useState } from "react";
 
-const BookingList = ({ bookings }) => {
+const BookingList = ({ bookings, deleteBooking }) => {
 
     const [filteredBookings, setFilteredBookings] = useState([]);
 
@@ -22,7 +22,7 @@ const BookingList = ({ bookings }) => {
     }
 
     const bookingsNodes = filteredBookings.map((booking, index) => {
-        return <Booking booking={booking} key={index} />
+        return <Booking booking={booking} key={index} deleteBooking={deleteBooking} />
     })
 
     const handleChange = (event) => {
@@ -66,7 +66,8 @@ const BookingList = ({ bookings }) => {
                         <th> <b>Table Number</b> </th>
                         <th> <b>Booking Date</b> </th>
                         <th> <b>Booking Time</b> </th>
-                        {/* <th> <b>Update</b> </th> */}
+                        <th> </th>
+                        <th> </th>
                     </tr>
                 </thead>
                 <tbody>
