@@ -38,11 +38,16 @@ const BookingList = ({ bookings }) => {
         setFilteredBookings(filteredDate);
     };
 
+    const handleClear = (event) => {
+        event.preventDefault()
+        setFilteredBookings(bookings)
+    }
+
     return (
         <>
             <h2>All bookings: </h2>
             <h3>Search</h3>
-            <form onSubmit={handleSubmit}>
+            <form className="filter-form" onSubmit={handleSubmit}>
                 <label>Date</label>
                 <input type="date" name="filterDate" value={filter.filterDate} onChange={handleChange} />
                 <label>Between</label>
@@ -51,6 +56,7 @@ const BookingList = ({ bookings }) => {
                 <input type="time" name="filterTimeUpTo" value={filter.filterTimeUpTo} onChange={handleChange} />
 
                 <button type="submit">Filter</button>
+                <button onClick={handleClear}>Clear</button>
             </form>
             <table>
                 <thead>
@@ -60,7 +66,7 @@ const BookingList = ({ bookings }) => {
                         <th> <b>Table Number</b> </th>
                         <th> <b>Booking Date</b> </th>
                         <th> <b>Booking Time</b> </th>
-                        <th> <b>Update</b> </th>
+                        {/* <th> <b>Update</b> </th> */}
                     </tr>
                 </thead>
                 <tbody>
