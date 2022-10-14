@@ -11,8 +11,27 @@ const CustomerContainer = () => {
     useEffect(() => {
         const request = new Request();
         request.get('/api/customers')
-        .then(data => setCustomers(data));
+        .then(fetchedCustomers => {
+            const arrayOfCustomerBookingCountsPromises = fetchedCustomers.map(customer => {
+                return getBookingCountById(customer.id);
+            });
+            
+            Promise.all(arrayOfCustomerBookingCountsPromises)
+            .then(fulfilledPromises => {
+
+                const updatedCustomers = fetchedCustomers.map((customer, index) => {
+                    customer.bookingCount = fulfilledPromises[index];
+                    return customer;
+                })
+                setCustomers(updatedCustomers);
+            });
+        });
     }, [])
+
+    const getBookingCountById = (id) => {
+        return fetch('api/bookings/'+ id+'/bookingcount')
+        .then(response => response.json());
+    }
 
     return (
 
