@@ -19,6 +19,8 @@ const CustomerList = ({ customers }) => {
                     <th><b>Customer ID</b></th>
                     <th> <b>Name</b> </th>
                     <th> <b>Booking Count</b></th>
+                    <th></th>
+                    <th></th>
                 </thead>
                 {customerNodes}
             </table>

@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import CustomerList from "../components/customer/CustomerList";
 import Request from "../helpers/request";
 import CustomerForm from "../components/customer/CustomerForm";
+import CustomerUpdate from "../components/customer/CustomerUpdate";
 
 const CustomerContainer = () => {
 
@@ -40,6 +41,7 @@ const CustomerContainer = () => {
             <Routes>
                 <Route path="/" element={<CustomerList customers={customers} />} />
                 <Route path="/new" element={<CustomerForm />} />
+                <Route path="/:id/edit" element={<CustomerUpdate/>} />
             </Routes>
         </div>
     );
