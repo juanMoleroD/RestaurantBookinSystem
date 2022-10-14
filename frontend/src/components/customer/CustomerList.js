@@ -4,7 +4,7 @@ import '../customer/customer-css.css'
 
 const CustomerList = ({ customers }) => {
 
-    if (customers.length === 0) {
+    if (!customers) {
         return <p> Loading... </p>
     }
 
@@ -18,6 +18,7 @@ const CustomerList = ({ customers }) => {
                 <thead className="">
                     <th><b>Customer ID</b></th>
                     <th> <b>Name</b> </th>
+                    <th> <b>Booking Count</b></th>
                 </thead>
                 {customerNodes}
             </table>

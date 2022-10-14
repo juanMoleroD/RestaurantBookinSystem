@@ -4,12 +4,10 @@ import com.example.backend.models.Booking;
 import com.example.backend.models.Customer;
 import com.example.backend.repositories.BookingRepository;
 import com.example.backend.repositories.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.awt.*;
-import java.awt.print.Book;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -52,6 +50,41 @@ public class DataLoader {
 
         customerRepository.save(customer2);
         bookingRepository.save(booking2);
+
+        Booking booking3 = new Booking();
+        booking3.setTableNumber(3);
+        booking3.setCustomer(customer2);
+        booking3.setDate(LocalDate.of(2022,5,15));
+        booking3.setTime(LocalTime.of(13, 00));
+
+        bookingRepository.save(booking3);
+
+
+//        Booking booking4 = new Booking();
+//        booking4.setTableNumber(4);
+//        booking4.setCustomer(customer1);
+//        booking4.setDate(LocalDate.of(2022,5,15));
+//        booking4.setTime(LocalTime.of(13, 00));
+//
+//        bookingRepository.save(booking4);
+
+
+        Customer customer3 = new Customer();
+        customer3.setName("Marcelo");
+        customer3.setBookings(new ArrayList<>());
+
+
+        Booking booking5 = new Booking();
+        booking5.setTableNumber(5);
+        booking5.setCustomer(customer3);
+        booking5.setDate(LocalDate.of(2022,7,12));
+        booking5.setTime(LocalTime.of(16, 00));
+
+
+        customerRepository.save(customer3);
+        bookingRepository.save(booking5);
+
+
 
 
     }

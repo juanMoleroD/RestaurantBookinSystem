@@ -25,7 +25,11 @@ public class BookingController {
     @GetMapping("/{id}")
     ResponseEntity <Optional<Booking>> getBookingById(@PathVariable Long id){
         return new ResponseEntity<>(repo.findById(id), HttpStatus.OK);
+    }
 
+    @GetMapping("/{id}/bookingcount")
+    ResponseEntity<Integer> countByCustomerId(@PathVariable Long id){
+        return new ResponseEntity<>(repo.countByCustomerId(id), HttpStatus.OK);
     }
 
     @PostMapping

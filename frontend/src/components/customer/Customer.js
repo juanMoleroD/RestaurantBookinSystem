@@ -7,6 +7,7 @@ const Customer = ({ customer }) => {
             <tr>
                 <td>{customer.id}</td>
                 <td>{customer.name}</td>
+                <td>{customer.bookingCount}</td>
             </tr>
         </>
     )
