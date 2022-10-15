@@ -5,47 +5,47 @@ import Request from "../helpers/request";
 import CustomerForm from "../components/customer/CustomerForm";
 import CustomerUpdate from "../components/customer/CustomerUpdate";
 
-const CustomerContainer = () => {
+const CustomerContainer = ({customers, deleteCustomer}) => {
 
-    const [customers, setCustomers] = useState([]);
+    // const [customers, setCustomers] = useState([]);
 
-    useEffect(() => {
-        const request = new Request();
-        request.get('/api/customers')
-            .then(fetchedCustomers => {
-                const arrayOfCustomerBookingCountsPromises = fetchedCustomers.map(customer => {
-                    return getBookingCountById(customer.id);
-                });
+    // useEffect(() => {
+    //     const request = new Request();
+    //     request.get('/api/customers')
+    //         .then(fetchedCustomers => {
+    //             const arrayOfCustomerBookingCountsPromises = fetchedCustomers.map(customer => {
+    //                 return getBookingCountById(customer.id);
+    //             });
 
-                Promise.all(arrayOfCustomerBookingCountsPromises)
-                    .then(fulfilledPromises => {
+    //             Promise.all(arrayOfCustomerBookingCountsPromises)
+    //                 .then(fulfilledPromises => {
 
-                        const updatedCustomers = fetchedCustomers.map((customer, index) => {
-                            customer.bookingCount = fulfilledPromises[index];
-                            return customer;
-                        })
-                        updatedCustomers.sort((a, b) => b.bookingCount - a.bookingCount);
-                        setCustomers(updatedCustomers);
-                    });
-            });
-    }, [])
+    //                     const updatedCustomers = fetchedCustomers.map((customer, index) => {
+    //                         customer.bookingCount = fulfilledPromises[index];
+    //                         return customer;
+    //                     })
+    //                     updatedCustomers.sort((a, b) => b.bookingCount - a.bookingCount);
+    //                     setCustomers(updatedCustomers);
+    //                 });
+    //         });
+    // }, [])
 
-    const getBookingCountById = (id) => {
-        return fetch('api/bookings/' + id + '/bookingcount')
-            .then(response => response.json());
-    }
+    // const getBookingCountById = (id) => {
+    //     return fetch('api/bookings/' + id + '/bookingcount')
+    //         .then(response => response.json());
+    // }
 
-    const deleteCustomer = (id) => {
-        const copyOfCustomers = [...customers]
-        let indexToDelete;
-        copyOfCustomers.forEach((customer, index) => {
-            if (customer.id == id) {
-                indexToDelete = index
-            }
-        })
-        copyOfCustomers.splice(indexToDelete, 1);
-        setCustomers(copyOfCustomers);
-    }
+    // const deleteCustomer = (id) => {
+    //     const copyOfCustomers = [...customers]
+    //     let indexToDelete;
+    //     copyOfCustomers.forEach((customer, index) => {
+    //         if (customer.id == id) {
+    //             indexToDelete = index
+    //         }
+    //     })
+    //     copyOfCustomers.splice(indexToDelete, 1);
+    //     setCustomers(copyOfCustomers);
+    // }
 
     return (
 

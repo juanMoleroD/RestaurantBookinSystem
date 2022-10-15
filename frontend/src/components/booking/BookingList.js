@@ -34,8 +34,15 @@ const BookingList = ({ bookings, deleteBooking }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const filteredDate = bookings.filter(booking => { return booking.date == filter.filterDate })
-        setFilteredBookings(filteredDate);
+        let now = new Date();
+        let dateFrom = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...filter.filterTimeFrom.split(":"));
+        let dateTo = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...filter.filterTimeUpTo.split(":"));
+        const filteredArray = bookings.filter(booking => { return booking.date == filter.filterDate })
+        const filteredDateTimeArray = filteredArray.filter(booking => {
+            let bookingDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...booking.time.split(":"))
+            return dateFrom <= bookingDate && bookingDate <= dateTo;
+        })
+        setFilteredBookings(filteredDateTimeArray);
     };
 
     const handleClear = (event) => {

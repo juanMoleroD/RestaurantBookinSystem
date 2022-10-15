@@ -6,36 +6,15 @@ import BookingForm from "../components/booking/BookingForm";
 import BookingUpdate from "../components/booking/BookingUpdate";
 
 
-const BookingContainer = () =>{
-
-    const [bookings, setBookings] = useState([]);
-
-    useEffect (()=> {
-        const request = new Request();
-        request.get('/api/bookings')
-        .then (data => setBookings(data));
-    }, []);
-
-    const deleteBooking = (id) => {
-        const copyOfBookings = [...bookings]
-        let indexToDelete;
-        copyOfBookings.forEach((booking, index) => {
-            if(booking.id == id) {
-                indexToDelete = index
-            }
-        })
-        copyOfBookings.splice(indexToDelete, 1);
-        setBookings(copyOfBookings);
-    }
+const BookingContainer = ({bookings, deleteBooking, customers}) =>{
 
 
-    
     return(
 
         <Routes>
-            <Route path="/" element={<BookingList bookings={bookings} deleteBooking={deleteBooking}/> }/>
-            <Route path="/new" element={<BookingForm/>} />
-            <Route path="/:id/edit" element={<BookingUpdate/>}/>
+            <Route path="/new" element={<BookingForm customers={customers} bookings={bookings}/>} />
+            <Route path="/" element={<BookingList bookings={bookings} deleteBooking={deleteBooking} customers={customers}/> }/>
+            <Route path="/:id/edit" element={<BookingUpdate customers={customers}/>}/>
         </Routes>
     )
 }
