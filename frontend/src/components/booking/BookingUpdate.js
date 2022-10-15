@@ -3,7 +3,7 @@ import Request from "../../helpers/request";
 import { useParams } from "react-router-dom";
 
 
-const BookingUpdate = () => {
+const BookingUpdate = ({customers}) => {
 
 
     const { id } = useParams();
@@ -22,14 +22,6 @@ const BookingUpdate = () => {
         copyOfBooking[propertyName] = event.target.value;
         setBooking(copyOfBooking);
     }
-
-    const [customers, setCustomers] = useState([]);
-
-    useEffect(() => {
-        const request = new Request();
-        request.get('/api/customers')
-            .then(data => setCustomers(data));
-    }, []);
 
     const handleSubmit = (event) => {
         event.preventDefault();

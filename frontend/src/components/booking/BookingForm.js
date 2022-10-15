@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Request from "../../helpers/request";
 
-const BookingForm = () => {
+const BookingForm = ({customers}) => {
 
     const [booking, setBooking] = useState({
         tableNumber: 0,
@@ -18,16 +18,16 @@ const BookingForm = () => {
     }
 
 
-    const [customers, setCustomers] = useState([]);
+    // const [customers, setCustomers] = useState([]);
 
-    useEffect(() => {
-        const request = new Request();
-        request.get('/api/customers')
-        .then(data => setCustomers(data));
-    }, []);
+    // useEffect(() => {
+    //     const request = new Request();
+    //     request.get('/api/customers')
+    //     .then(data => setCustomers(data));
+    // }, []);
 
-    const customerOptions = customers.map((customer, index) => {
-            return <option value={index} key={index}>{customer.name}</option>
+    const customerOptions = customers.map((banana, index) => {
+            return <option value={index} key={index}>{banana.name}</option>
     });
 
     const handleSubmit = (event) => {
@@ -47,7 +47,7 @@ const BookingForm = () => {
     }
 
 
-    return (
+    return (!customers) ? null : (
         <>
             <form onSubmit={handleSubmit}>
                 <label>Table Number</label>

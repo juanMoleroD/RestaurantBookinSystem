@@ -16,13 +16,17 @@ const CustomerList = ({ customers, deleteCustomer }) => {
         <>
             <table className="customer-table">
                 <thead className="">
-                    <th><b>Customer ID</b></th>
-                    <th> <b>Name</b> </th>
-                    <th> <b>Booking Count</b></th>
-                    <th></th>
-                    <th></th>
+                    <tr>
+                        <th><b>Customer ID</b></th>
+                        <th> <b>Name</b> </th>
+                        <th> <b>Booking Count</b></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
                 </thead>
-                {customerNodes}
+                <tbody>
+                    {customerNodes}
+                </tbody>
             </table>
         </>
     )
