@@ -12,7 +12,7 @@ const BookingContainer = ({bookings, deleteBooking, customers}) =>{
     return(
 
         <Routes>
-            <Route path="/new" element={<BookingForm customers={customers}/>} />
+            <Route path="/new" element={<BookingForm customers={customers} bookings={bookings}/>} />
             <Route path="/" element={<BookingList bookings={bookings} deleteBooking={deleteBooking} customers={customers}/> }/>
             <Route path="/:id/edit" element={<BookingUpdate customers={customers}/>}/>
         </Routes>
