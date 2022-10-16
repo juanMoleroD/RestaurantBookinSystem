@@ -1,5 +1,8 @@
 import React from "react";
 import Request from "../../helpers/request";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
 
 const Customer = ({ customer, deleteCustomer }) => {
 
@@ -17,7 +20,7 @@ const Customer = ({ customer, deleteCustomer }) => {
                 <td>{customer.name}</td>
                 <td>{customer.bookingCount}</td>
                 <td><button><a href={'/customers/' + customer.id + '/edit'} >Update</a></button></td>
-                <td><button onClick={handleDelete}>Delete</button></td>
+                <td><button onClick={handleDelete} className="trash-icon"><FontAwesomeIcon icon={faTrash} /></button></td>
             </tr>
         </>
     )

@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import Booking from "./Booking";
 import Request from "../../helpers/request";
 import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 
 const BookingList = ({ bookings, deleteBooking }) => {
 
@@ -52,7 +54,7 @@ const BookingList = ({ bookings, deleteBooking }) => {
 
     return (
         <>
-            <h2 className="title">All Bookings: </h2>
+            <h2 className="title">Bookings<FontAwesomeIcon icon={faCalendar} className="icon"/></h2>
             
             <form className="filter-form" onSubmit={handleSubmit}>
                 <label>Date</label>

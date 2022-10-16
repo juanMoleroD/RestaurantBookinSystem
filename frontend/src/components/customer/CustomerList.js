@@ -1,6 +1,8 @@
 import React from "react";
 import Customer from "./Customer";
 import '../customer/customer.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserGroup } from '@fortawesome/free-solid-svg-icons';
 
 const CustomerList = ({ customers, deleteCustomer }) => {
 
@@ -14,9 +16,11 @@ const CustomerList = ({ customers, deleteCustomer }) => {
 
     return (
         <>
-            <table className="customer-table">
+         <h2 className="title">Customers<FontAwesomeIcon icon={faUserGroup} className="icon" /></h2>
+
+            <table className="styled-table">
                 <thead className="">
-                    <tr>
+                    <tr className="table-columns">
                         <th><b>Customer ID</b></th>
                         <th> <b>Name</b> </th>
                         <th> <b>Booking Count</b></th>
