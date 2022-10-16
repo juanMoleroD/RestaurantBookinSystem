@@ -52,8 +52,8 @@ const BookingList = ({ bookings, deleteBooking }) => {
 
     return (
         <>
-            <h2>All bookings: </h2>
-            <h3>Search</h3>
+            <h2 className="title">All Bookings: </h2>
+            
             <form className="filter-form" onSubmit={handleSubmit}>
                 <label>Date</label>
                 <input type="date" name="filterDate" value={filter.filterDate} onChange={handleChange} />
@@ -65,14 +65,14 @@ const BookingList = ({ bookings, deleteBooking }) => {
                 <button type="submit">Filter</button>
                 <button onClick={handleClear}>Clear</button>
             </form>
-            <table>
+            <table className="styled-table">
                 <thead>
-                    <tr className="">
+                    <tr className="table-columns">
                         <th><b>Booking ID</b></th>
                         <th> <b>Customer name</b> </th>
                         <th> <b>Table Number</b> </th>
-                        <th> <b>Booking Date</b> </th>
-                        <th> <b>Booking Time</b> </th>
+                        <th> <b>Date</b> </th>
+                        <th> <b>Time</b> </th>
                         <th> </th>
                         <th> </th>
                     </tr>

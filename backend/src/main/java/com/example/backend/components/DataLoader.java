@@ -60,13 +60,13 @@ public class DataLoader {
         bookingRepository.save(booking3);
 
 
-//        Booking booking4 = new Booking();
-//        booking4.setTableNumber(4);
-//        booking4.setCustomer(customer1);
-//        booking4.setDate(LocalDate.of(2022,5,15));
-//        booking4.setTime(LocalTime.of(13, 00));
-//
-//        bookingRepository.save(booking4);
+        Booking booking4 = new Booking();
+        booking4.setTableNumber(4);
+        booking4.setCustomer(customer1);
+        booking4.setDate(LocalDate.of(2022,5,15));
+        booking4.setTime(LocalTime.of(13, 00));
+
+        bookingRepository.save(booking4);
 
 
         Customer customer3 = new Customer();
@@ -85,6 +85,36 @@ public class DataLoader {
         bookingRepository.save(booking5);
 
 
+        Customer customer4 = new Customer();
+        customer4.setBookings(new ArrayList<>());
+        customer4.setName("Ben");
+
+
+        Booking booking6 = new Booking();
+        booking6.setTableNumber(6);
+        booking6.setCustomer(customer4);
+        booking6.setDate(LocalDate.of(2022,9,12));
+        booking6.setTime(LocalTime.of(19, 00));
+
+        customerRepository.save(customer4);
+        bookingRepository.save(booking6);
+
+
+
+
+        Customer customer5 = new Customer();
+        customer5.setBookings(new ArrayList<>());
+        customer5.setName("Steve");
+
+
+        Booking booking7 = new Booking();
+        booking7.setTableNumber(7);
+        booking7.setCustomer(customer5);
+        booking7.setDate(LocalDate.of(2022,12,01));
+        booking7.setTime(LocalTime.of(11, 00));
+
+        customerRepository.save(customer5);
+        bookingRepository.save(booking7);
 
 
     }
