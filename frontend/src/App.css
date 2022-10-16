@@ -1,5 +1,5 @@
 #main-navbar {
-  background-color: green;
+  background-color: #3D55A4;
   display:flex;
   justify-content: space-between;
   color: white;
@@ -9,15 +9,46 @@
   padding: 10px;
 }
 
-#main-navbar > ul {
+.ul-navbar {
   display: flex;
   list-style: none;
+  margin-right:20px;
+
 }
 
-#main-navbar > ul > li {
-  padding: 6px;
+#main-navbar > ul > li{
+
+  padding: 15px;
 }
 
-a:any-link {
-  color: white;
+.app-text{
+  margin-left: 20px;
+  
+}
+
+
+#main-navbar > ul > li:hover {
+  
+  transform:scale(1.1);
+  opacity:1;
+  filter:blur(0);
+  text-decoration:none;
+  color:#fff;
+}
+
+
+
+.restaurant-icon{
+  font-size: 30px;
+    margin-left: 15px;
+}
+
+.nav-text:link, .nav-text:visited {
+  background-color: #EFF2F1;
+  border-radius: 8px;
+  color: black;
+  padding: 8px 18px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }

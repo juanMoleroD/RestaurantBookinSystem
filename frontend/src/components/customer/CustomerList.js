@@ -1,6 +1,6 @@
 import React from "react";
 import Customer from "./Customer";
-import '../customer/customer-css.css'
+import '../customer/customer.css'
 
 const CustomerList = ({ customers, deleteCustomer }) => {
 
