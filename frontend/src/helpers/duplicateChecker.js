@@ -3,9 +3,9 @@ class DuplicateChecker {
     noDuplicatesExists(existingBookings, bookingToCheck) {
         let result = true
         existingBookings.forEach(booking => {
-            if (booking.id != bookingToCheck.id
-                && booking.date == bookingToCheck.date
-                && booking.tableNumber == bookingToCheck.tableNumber
+            if (booking.id !== bookingToCheck.id
+                && booking.date === bookingToCheck.date
+                && booking.tableNumber === parseInt(bookingToCheck.tableNumber)
                 && this.checkTableOccupiedAtBookingTime(booking, bookingToCheck)) {
                     result = false;
             }

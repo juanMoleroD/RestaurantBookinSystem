@@ -4,10 +4,10 @@ import { useParams } from "react-router-dom";
 import DuplicateChecker from "../../helpers/duplicateChecker";
 
 
+
 const BookingUpdate = ({ customers, bookings }) => {
 
-
-    const { id } = useParams();
+    const {id} = useParams();
 
     const [updatedBooking, setUpdatedBooking] = useState({});
 
@@ -15,6 +15,7 @@ const BookingUpdate = ({ customers, bookings }) => {
         const request = new Request();
         request.get('/api/bookings/' + id)
             .then(data => setUpdatedBooking(data));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleChange = (event) => {
@@ -22,7 +23,7 @@ const BookingUpdate = ({ customers, bookings }) => {
         const copyOfUpdatedBooking = { ...updatedBooking };
         copyOfUpdatedBooking[propertyName] = event.target.value;
         setUpdatedBooking(copyOfUpdatedBooking);
-        if (document.getElementById("duplicate-error").hidden == false) {
+        if (document.getElementById("duplicate-error").hidden === false) {
             document.getElementById("duplicate-error").hidden = true
         }
     }
@@ -52,7 +53,7 @@ const BookingUpdate = ({ customers, bookings }) => {
         return <option value={customer.id} key={index}>{customer.name}</option>
     });
 
-    return (Object.keys(updatedBooking).length == 0 || customers.length == 0) ? null : (
+    return (Object.keys(updatedBooking).length === 0 || customers.length === 0) ? null : (
 
         <>
             <h2>Update</h2>

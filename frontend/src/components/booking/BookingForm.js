@@ -16,7 +16,7 @@ const BookingForm = ({ customers, bookings }) => {
         const copyOfNewBooking = { ...newBooking };
         copyOfNewBooking[propertyName] = event.target.value;
         setNewBooking(copyOfNewBooking);
-        if (document.getElementById("duplicate-error").hidden == false) {
+        if (document.getElementById("duplicate-error").hidden === false) {
             document.getElementById("duplicate-error").hidden = true
         }
     }

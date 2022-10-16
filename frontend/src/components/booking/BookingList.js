@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Booking from "./Booking";
-import Request from "../../helpers/request";
 import { useState } from "react";
 
 const BookingList = ({ bookings, deleteBooking }) => {
@@ -35,7 +34,7 @@ const BookingList = ({ bookings, deleteBooking }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        let filteredArray = bookings.filter(booking => { return booking.date == filter.filterDate });
+        let filteredArray = bookings.filter(booking => { return booking.date === filter.filterDate });
         
         if(filter.filterTimeFrom && filter.filterTimeUpTo) {
             let now = new Date();
