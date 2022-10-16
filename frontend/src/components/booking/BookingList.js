@@ -56,7 +56,7 @@ const BookingList = ({ bookings, deleteBooking }) => {
         <>
             <h2 className="title">Bookings<FontAwesomeIcon icon={faCalendar} className="icon"/></h2>
             
-            <form className="filter-form" onSubmit={handleSubmit}>
+            <form className="form" onSubmit={handleSubmit}>
                 <label>Date</label>
                 <input type="date" name="filterDate" value={filter.filterDate} onChange={handleChange} />
                 <label>Between</label>

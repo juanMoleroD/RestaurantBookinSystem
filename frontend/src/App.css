@@ -104,7 +104,7 @@ a:hover{
   color:red;
 }
 
-.filter-form{
+.form{
   display: flex;
   justify-content: center;
   gap: 10px;
