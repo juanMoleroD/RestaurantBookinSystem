@@ -14,7 +14,7 @@ const BookingList = ({ bookings, deleteBooking }) => {
     });
 
     useEffect(() => {
-        setFilteredBookings(bookings)
+        setFilteredBookings(bookings);
     }, [bookings]);
 
     if (bookings.length === 0) {
@@ -34,20 +34,25 @@ const BookingList = ({ bookings, deleteBooking }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        let now = new Date();
-        let dateFrom = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...filter.filterTimeFrom.split(":"));
-        let dateTo = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...filter.filterTimeUpTo.split(":"));
-        const filteredArray = bookings.filter(booking => { return booking.date == filter.filterDate })
-        const filteredDateTimeArray = filteredArray.filter(booking => {
-            let bookingDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...booking.time.split(":"))
-            return dateFrom <= bookingDate && bookingDate <= dateTo;
-        })
-        setFilteredBookings(filteredDateTimeArray);
+
+        let filteredArray = bookings.filter(booking => { return booking.date == filter.filterDate });
+        
+        if(filter.filterTimeFrom && filter.filterTimeUpTo) {
+            let now = new Date();
+            let timeFromInDateFormat = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...filter.filterTimeFrom.split(":"));
+            let timeToInDateFormat = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...filter.filterTimeUpTo.split(":"));
+
+            filteredArray = filteredArray.filter(booking => {
+                let bookingDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...booking.time.split(":"));
+                return (timeFromInDateFormat <= bookingDate && bookingDate <= timeToInDateFormat);
+            })
+        }
+        setFilteredBookings(filteredArray);
     };
 
     const handleClear = (event) => {
-        event.preventDefault()
-        setFilteredBookings(bookings)
+        event.preventDefault();
+        setFilteredBookings(bookings);
     }
 
     return (
@@ -56,7 +61,7 @@ const BookingList = ({ bookings, deleteBooking }) => {
             <h3>Search</h3>
             <form className="filter-form" onSubmit={handleSubmit}>
                 <label>Date</label>
-                <input type="date" name="filterDate" value={filter.filterDate} onChange={handleChange} />
+                <input type="date" name="filterDate" value={filter.filterDate} onChange={handleChange} required/>
                 <label>Between</label>
                 <input type="time" name="filterTimeFrom" value={filter.filterTimeFrom} onChange={handleChange} />
                 <label> and </label>
