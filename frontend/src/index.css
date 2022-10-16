@@ -5,7 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- 
+  background: url(/Users/alejandrogarcia/Documents/codeclan_work/RestaurantBookingSystem/frontend/public/image3.jpeg);
+
 }
 
 code {
