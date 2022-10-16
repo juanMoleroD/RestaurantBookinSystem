@@ -3,7 +3,7 @@ import Request from "../../helpers/request";
 
 const BookingForm = ({ customers, bookings }) => {
 
-    const [booking, setBooking] = useState({
+    const [newBooking, setNewBooking] = useState({
         tableNumber: 0,
         date: "",
         time: "",
@@ -12,9 +12,9 @@ const BookingForm = ({ customers, bookings }) => {
 
     const handleChange = (event) => {
         const propertyName = event.target.name;
-        const copyOfBooking = { ...booking };
-        copyOfBooking[propertyName] = event.target.value;
-        setBooking(copyOfBooking);
+        const copyOfNewBooking = { ...newBooking };
+        copyOfNewBooking[propertyName] = event.target.value;
+        setNewBooking(copyOfNewBooking);
     }
 
     const customerOptions = customers.map((customer, index) => {
@@ -26,27 +26,47 @@ const BookingForm = ({ customers, bookings }) => {
 
         if (notDuplicatesBookings()) {
             const request = new Request();
-            request.post("/api/bookings", booking)
+            request.post("/api/bookings", newBooking)
                 .then(() => {
                     window.location = '/bookings'
                 }); 
-        } else console.log("unable to book")
+        } else console.log("unable to book") // implement
     
     }
     const notDuplicatesBookings = () =>{
         let result = true
-        bookings.forEach(bookingElement => {
-            if(bookingElement.tableNumber == booking.tableNumber && bookingElement.date == booking.date && bookingElement.time == booking.time + ":00") {
-                result = false;
+        bookings.forEach(booking => {
+            if(booking.date == newBooking.date 
+                && booking.tableNumber == newBooking.tableNumber 
+                && checkTableOccupiedAtBookingTime(booking, newBooking)) 
+                {
+                    result = false;
             } 
         })
         return result
     }
 
+    const checkTableOccupiedAtBookingTime = (booking, newBooking) => {
+        let result = false;
+        let now = new Date();
+
+        const newBookingInDateFormat = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ... newBooking.time.split(":"))
+        const newBookingInDateFormatPlusTwoHours = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ... newBooking.time.split(":"))
+        newBookingInDateFormatPlusTwoHours.setHours(newBookingInDateFormatPlusTwoHours.getHours() + 2);
+
+        const bookingInDateFormat = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...booking.time.split(":"));
+        const bookingInDateFormatPlusTwoHours = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...booking.time.split(":"));
+        bookingInDateFormatPlusTwoHours.setHours(bookingInDateFormatPlusTwoHours.getHours() + 2);
+
+        if (bookingInDateFormat <= newBookingInDateFormat && newBookingInDateFormat < bookingInDateFormatPlusTwoHours ) result = true;
+        if (bookingInDateFormat <= newBookingInDateFormatPlusTwoHours && newBookingInDateFormatPlusTwoHours < bookingInDateFormatPlusTwoHours ) result = true;
+        return result;
+    }
+
     const handleCustomerSelection = (event) => {
-        const copyOfBooking = { ...booking };
-        copyOfBooking.customer = customers[event.target.value]
-        setBooking(copyOfBooking);
+        const copyOfNewBooking = { ...newBooking };
+        copyOfNewBooking.customer = customers[event.target.value]
+        setNewBooking(copyOfNewBooking);
     }
 
 
@@ -54,11 +74,11 @@ const BookingForm = ({ customers, bookings }) => {
         <>
             <form onSubmit={handleSubmit}>
                 <label>Table Number</label>
-                <input type="number" name="tableNumber" value={booking.tableNumber} onChange={handleChange} required />
+                <input type="number" name="tableNumber" value={newBooking.tableNumber} onChange={handleChange} required />
                 <label>Date</label>
-                <input type="date" name="date" value={booking.date} onChange={handleChange} required />
+                <input type="date" name="date" value={newBooking.date} onChange={handleChange} required />
                 <label>Time</label>
-                <input type="time" name="time" value={booking.time} onChange={handleChange} required />
+                <input type="time" name="time" value={newBooking.time} onChange={handleChange} required />
                 <label>Customer</label>
                 <select name="customer" defaultValue={"select-customer"} onChange={handleCustomerSelection}>
                     <option disabled value="select-customer">Select Customer</option>
