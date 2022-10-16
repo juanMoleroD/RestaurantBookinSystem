@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Request from "../../helpers/request";
+import DuplicateChecker from "../../helpers/duplicateChecker";
 
 const BookingForm = ({ customers, bookings }) => {
 
@@ -15,6 +16,9 @@ const BookingForm = ({ customers, bookings }) => {
         const copyOfNewBooking = { ...newBooking };
         copyOfNewBooking[propertyName] = event.target.value;
         setNewBooking(copyOfNewBooking);
+        if (document.getElementById("duplicate-error").hidden == false) {
+            document.getElementById("duplicate-error").hidden = true
+        }
     }
 
     const customerOptions = customers.map((customer, index) => {
@@ -24,43 +28,16 @@ const BookingForm = ({ customers, bookings }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (notDuplicatesBookings()) {
+        const checker = new DuplicateChecker();
+        if (checker.noDuplicatesExists(bookings, newBooking)) {
             const request = new Request();
             request.post("/api/bookings", newBooking)
                 .then(() => {
                     window.location = '/bookings'
-                }); 
-        } else console.log("unable to book") // implement
-    
-    }
-    const notDuplicatesBookings = () =>{
-        let result = true
-        bookings.forEach(booking => {
-            if(booking.date == newBooking.date 
-                && booking.tableNumber == newBooking.tableNumber 
-                && checkTableOccupiedAtBookingTime(booking, newBooking)) 
-                {
-                    result = false;
-            } 
-        })
-        return result
-    }
-
-    const checkTableOccupiedAtBookingTime = (booking, newBooking) => {
-        let result = false;
-        let now = new Date();
-
-        const newBookingInDateFormat = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ... newBooking.time.split(":"))
-        const newBookingInDateFormatPlusTwoHours = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ... newBooking.time.split(":"))
-        newBookingInDateFormatPlusTwoHours.setHours(newBookingInDateFormatPlusTwoHours.getHours() + 2);
-
-        const bookingInDateFormat = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...booking.time.split(":"));
-        const bookingInDateFormatPlusTwoHours = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...booking.time.split(":"));
-        bookingInDateFormatPlusTwoHours.setHours(bookingInDateFormatPlusTwoHours.getHours() + 2);
-
-        if (bookingInDateFormat <= newBookingInDateFormat && newBookingInDateFormat < bookingInDateFormatPlusTwoHours ) result = true;
-        if (bookingInDateFormat <= newBookingInDateFormatPlusTwoHours && newBookingInDateFormatPlusTwoHours < bookingInDateFormatPlusTwoHours ) result = true;
-        return result;
+                });
+        } else {
+            document.getElementById("duplicate-error").hidden = false;
+        }
     }
 
     const handleCustomerSelection = (event) => {
@@ -86,9 +63,11 @@ const BookingForm = ({ customers, bookings }) => {
                 </select>
                 <input type="submit" value="Save" />
             </form>
+            <div id="duplicate-error" hidden={true}>
+                <p>Sorry, that table conflicts with a previous booking</p>
+            </div>
         </>
     )
-
 }
 
 export default BookingForm;

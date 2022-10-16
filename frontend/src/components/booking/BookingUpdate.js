@@ -1,65 +1,78 @@
 import React, { useState, useEffect } from "react";
 import Request from "../../helpers/request";
 import { useParams } from "react-router-dom";
+import DuplicateChecker from "../../helpers/duplicateChecker";
 
 
-const BookingUpdate = ({customers}) => {
+const BookingUpdate = ({ customers, bookings }) => {
 
 
     const { id } = useParams();
 
-    const [booking, setBooking] = useState({});
+    const [updatedBooking, setUpdatedBooking] = useState({});
 
     useEffect(() => {
         const request = new Request();
         request.get('/api/bookings/' + id)
-            .then(data => setBooking(data));
+            .then(data => setUpdatedBooking(data));
     }, []);
 
     const handleChange = (event) => {
         const propertyName = event.target.name;
-        const copyOfBooking = { ...booking };
-        copyOfBooking[propertyName] = event.target.value;
-        setBooking(copyOfBooking);
+        const copyOfUpdatedBooking = { ...updatedBooking };
+        copyOfUpdatedBooking[propertyName] = event.target.value;
+        setUpdatedBooking(copyOfUpdatedBooking);
+        if (document.getElementById("duplicate-error").hidden == false) {
+            document.getElementById("duplicate-error").hidden = true
+        }
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const request = new Request();
-        request.put("/api/bookings/" + id, booking)
-            .then(() => {
-                window.location = '/bookings'
-            });
+
+        const checker = new DuplicateChecker();
+        if (checker.noDuplicatesExists(bookings, updatedBooking)) {
+            const request = new Request();
+            request.put("/api/bookings/" + id, updatedBooking)
+                .then(() => {
+                    window.location = '/bookings'
+                });
+        } else {
+            document.getElementById("duplicate-error").hidden = false;
+        }
     }
 
     const handleCustomerSelection = (event) => {
-        const copyOfBooking = { ...booking };
-        copyOfBooking.customer = customers[event.target.value - 1]
-        setBooking(copyOfBooking);
+        const copyOfUpdatedBooking = { ...updatedBooking };
+        copyOfUpdatedBooking.customer = customers[event.target.value - 1]
+        setUpdatedBooking(copyOfUpdatedBooking);
     }
 
     const customerOptions = customers.map((customer, index) => {
         return <option value={customer.id} key={index}>{customer.name}</option>
     });
 
-    return (Object.keys(booking).length == 0 || customers.length == 0) ? null : (
+    return (Object.keys(updatedBooking).length == 0 || customers.length == 0) ? null : (
 
         <>
             <h2>Update</h2>
             <form onSubmit={handleSubmit}>
                 <label>Table Number</label>
-                <input type="number" name="tableNumber" value={booking.tableNumber} onChange={handleChange} />
+                <input type="number" name="tableNumber" value={updatedBooking.tableNumber} onChange={handleChange} />
                 <label>Date</label>
-                <input type="date" name="date" value={booking.date} onChange={handleChange} />
+                <input type="date" name="date" value={updatedBooking.date} onChange={handleChange} />
                 <label>Time</label>
-                <input type="time" name="time" value={booking.time} onChange={handleChange} />
+                <input type="time" name="time" value={updatedBooking.time} onChange={handleChange} />
                 <label>Customer</label>
-                <select name="customer" defaultValue={booking.customer.id} onChange={handleCustomerSelection}>
+                <select name="customer" defaultValue={updatedBooking.customer.id} onChange={handleCustomerSelection}>
                     <option disabled value="select-customer">Select Customer</option>
                     {customerOptions}
                 </select>
                 <input type="submit" value="Save" />
             </form>
+            <div id="duplicate-error" hidden={true}>
+                <p>Sorry, that table conflicts with a previous booking</p>
+            </div>
         </>
     )
 
