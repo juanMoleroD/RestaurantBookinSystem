@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import Booking from "./Booking";
 import Request from "../../helpers/request";
 import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 
 const BookingList = ({ bookings, deleteBooking }) => {
 
@@ -52,9 +54,9 @@ const BookingList = ({ bookings, deleteBooking }) => {
 
     return (
         <>
-            <h2>All bookings: </h2>
-            <h3>Search</h3>
-            <form className="filter-form" onSubmit={handleSubmit}>
+            <h2 className="title">Bookings<FontAwesomeIcon icon={faCalendar} className="icon"/></h2>
+            
+            <form className="form" onSubmit={handleSubmit}>
                 <label>Date</label>
                 <input type="date" name="filterDate" value={filter.filterDate} onChange={handleChange} />
                 <label>Between</label>
@@ -65,14 +67,14 @@ const BookingList = ({ bookings, deleteBooking }) => {
                 <button type="submit">Filter</button>
                 <button onClick={handleClear}>Clear</button>
             </form>
-            <table>
+            <table className="styled-table">
                 <thead>
-                    <tr className="">
+                    <tr className="table-columns">
                         <th><b>Booking ID</b></th>
                         <th> <b>Customer name</b> </th>
                         <th> <b>Table Number</b> </th>
-                        <th> <b>Booking Date</b> </th>
-                        <th> <b>Booking Time</b> </th>
+                        <th> <b>Date</b> </th>
+                        <th> <b>Time</b> </th>
                         <th> </th>
                         <th> </th>
                     </tr>

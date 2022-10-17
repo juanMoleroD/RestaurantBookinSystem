@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Request from "../../helpers/request";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 
 const CustomerUpdate = () => {
@@ -33,7 +35,8 @@ const CustomerUpdate = () => {
 
     return (Object.keys(customer).length == 0) ? null : (
         <div>
-            <form onSubmit={handleSubmit}>
+         <h2 className="title">Update Customer<FontAwesomeIcon icon={faPenToSquare} className="icon" /></h2>
+            <form onSubmit={handleSubmit} className="form">
                 <label><b>Name</b></label>
                 <input type="text" placeholder="Name" name="name" value={customer.name} onChange={onChange} />
                 <button type="submit"> Save </button>
