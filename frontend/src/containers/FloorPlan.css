@@ -1,0 +1,23 @@
+.empty{
+    width: 100px;
+    height: 100px;
+    background-color: black;
+}
+
+.table{
+    width: 100px;
+    height: 100px;
+    background-color: #EFF2F1;
+}
+
+.floor-plan{
+    display: flex;
+    justify-content: center;
+    margin-top: 90px;
+}
+
+.dinamic{
+    width: 100px;
+    height: 100px;
+    background-color: #EFF2F1;
+}

@@ -21,7 +21,8 @@ const CustomerForm = () => {
         event.preventDefault();
         const request = new Request();
         request.post('/api/customers', customer)
-            .then(() => window.location = '/customers')
+            .then(() => setCustomer({name: ""}))
+            // .then(() => window.location = '/customers')
     }
 
     return (

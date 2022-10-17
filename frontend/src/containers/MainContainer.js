@@ -70,7 +70,7 @@ const MainContainer = () => {
         <React.Fragment>
             <NavBar />
             <Routes>
-                <Route path="/home" element={<HomePage />} />
+                <Route path="/home" element={<HomePage bookings={bookings}/>} />
                 <Route path="/bookings/*" element={<BookingContainer bookings={bookings} deleteBooking={deleteBooking} customers={customers}/>} />
                 <Route path="/customers/*" element={<CustomerContainer customers={customers} deleteCustomer={deleteCustomer}/>} />
                 <Route path="*" element={<ErrorPage />} />
