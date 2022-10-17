@@ -45,7 +45,7 @@ public class DataLoader {
         Booking booking2 = new Booking();
         booking2.setTableNumber(2);
         booking2.setCustomer(customer2);
-        booking2.setDate(LocalDate.of(2022,5,15));
+        booking2.setDate(LocalDate.of(2022,6,15));
         booking2.setTime(LocalTime.of(13, 00));
 
         customerRepository.save(customer2);
@@ -55,31 +55,29 @@ public class DataLoader {
         booking3.setTableNumber(3);
         booking3.setCustomer(customer2);
         booking3.setDate(LocalDate.of(2022,5,15));
-        booking3.setTime(LocalTime.of(13, 00));
+        booking3.setTime(LocalTime.of(14, 00));
 
         bookingRepository.save(booking3);
 
 
-        Booking booking4 = new Booking();
-        booking4.setTableNumber(4);
-        booking4.setCustomer(customer1);
-        booking4.setDate(LocalDate.of(2022,5,15));
-        booking4.setTime(LocalTime.of(13, 00));
-
-        bookingRepository.save(booking4);
+//        Booking booking4 = new Booking();
+//        booking4.setTableNumber(4);
+//        booking4.setCustomer(customer1);
+//        booking4.setDate(LocalDate.of(2022,5,15));
+//        booking4.setTime(LocalTime.of(13, 00));
+//
+//        bookingRepository.save(booking4);
 
 
         Customer customer3 = new Customer();
         customer3.setName("Marcelo");
         customer3.setBookings(new ArrayList<>());
 
-
         Booking booking5 = new Booking();
         booking5.setTableNumber(5);
         booking5.setCustomer(customer3);
         booking5.setDate(LocalDate.of(2022,7,12));
         booking5.setTime(LocalTime.of(16, 00));
-
 
         customerRepository.save(customer3);
         bookingRepository.save(booking5);
@@ -100,8 +98,6 @@ public class DataLoader {
         bookingRepository.save(booking6);
 
 
-
-
         Customer customer5 = new Customer();
         customer5.setBookings(new ArrayList<>());
         customer5.setName("Steve");
@@ -115,10 +111,5 @@ public class DataLoader {
 
         customerRepository.save(customer5);
         bookingRepository.save(booking7);
-
-
     }
-
-
-
 }
