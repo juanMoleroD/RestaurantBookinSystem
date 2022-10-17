@@ -30,7 +30,7 @@ const CustomerForm = () => {
                   <h2 className="title">Add Customer<FontAwesomeIcon icon={faUserPlus} className="icon" /></h2>
             <form onSubmit={handleSubmit} className="form">
                 <label><b>Name</b></label>
-                <input type="text" placeholder="Name" name="name" value={customer.name} onChange={onChange} />
+                <input type="text" placeholder="Name" name="name" value={customer.name} onChange={onChange} required/>
                 <button type="submit"> Save </button>
             </form>
         </div>

@@ -25,8 +25,10 @@ class DuplicateChecker {
         const existingBookingInDateFormatPlusTwoHours = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...existingBooking.time.split(":"));
         existingBookingInDateFormatPlusTwoHours.setHours(existingBookingInDateFormatPlusTwoHours.getHours() + 2);
 
-        if (existingBookingInDateFormat <= bookingToCheckInDateFormat && bookingToCheckInDateFormat < existingBookingInDateFormatPlusTwoHours) result = true;
-        if (existingBookingInDateFormat <= bookingToCheckInDateFormatPlusTwoHours && bookingToCheckInDateFormatPlusTwoHours < existingBookingInDateFormatPlusTwoHours) result = true;
+        if (existingBookingInDateFormat <= bookingToCheckInDateFormat 
+            && bookingToCheckInDateFormat < existingBookingInDateFormatPlusTwoHours) result = true;
+        if (existingBookingInDateFormat <= bookingToCheckInDateFormatPlusTwoHours 
+            && bookingToCheckInDateFormatPlusTwoHours < existingBookingInDateFormatPlusTwoHours) result = true;
         return result;
     }
 }
