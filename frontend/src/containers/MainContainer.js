@@ -15,7 +15,7 @@ const MainContainer = () => {
         const copyOfBookings = [...bookings]
         let indexToDelete;
         copyOfBookings.forEach((booking, index) => {
-            if(booking.id == id) {
+            if(booking.id === id) {
                 indexToDelete = index
             }
         })
@@ -58,7 +58,7 @@ const MainContainer = () => {
         const copyOfCustomers = [...customers]
         let indexToDelete;
         copyOfCustomers.forEach((customer, index) => {
-            if (customer.id == id) {
+            if (customer.id === id) {
                 indexToDelete = index
             }
         })

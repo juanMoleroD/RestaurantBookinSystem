@@ -17,6 +17,7 @@ const CustomerUpdate = () => {
             .then(data => {
                 setCustomer(data);
             });
+            // eslint-disable-next-line
     }, []);
 
     const onChange = (event) => {
@@ -33,7 +34,7 @@ const CustomerUpdate = () => {
             .then(() => window.location = '/customers')
     }
 
-    return (Object.keys(customer).length == 0) ? null : (
+    return (Object.keys(customer).length === 0) ? null : (
         <div>
          <h2 className="title">Update Customer<FontAwesomeIcon icon={faPenToSquare} className="icon" /></h2>
             <form onSubmit={handleSubmit} className="form">
