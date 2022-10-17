@@ -72,9 +72,12 @@ const BookingUpdate = ({ customers, bookings }) => {
                 </select>
                 <input type="submit" value="Save"  />
             </form>
-            <div id="duplicate-error" hidden={true}>
-                <p>Sorry, that table conflicts with a previous booking</p>
+            <section className="text-box">
+            <div id="duplicate-error" hidden={true}> 
+                <p><b>Sorry, that table conflicts with a previous booking</b></p>
             </div>
+            </section>
+          
         </>
     )
 
