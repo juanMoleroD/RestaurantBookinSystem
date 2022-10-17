@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Request from "../../helpers/request";
 import { useParams } from "react-router-dom";
 import DuplicateChecker from "../../helpers/duplicateChecker";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 
 const BookingUpdate = ({ customers, bookings }) => {
@@ -56,20 +57,20 @@ const BookingUpdate = ({ customers, bookings }) => {
     return (Object.keys(updatedBooking).length === 0 || customers.length === 0) ? null : (
 
         <>
-            <h2>Update</h2>
-            <form onSubmit={handleSubmit}>
-                <label>Table Number</label>
+             <h2 className="title">Update Booking<FontAwesomeIcon icon={faPenToSquare} className="icon" /></h2>
+            <form onSubmit={handleSubmit} className="form">
+                <label><b>Table Number</b></label>
                 <input type="number" name="tableNumber" value={updatedBooking.tableNumber} onChange={handleChange} />
-                <label>Date</label>
+                <label><b>Date</b></label>
                 <input type="date" name="date" value={updatedBooking.date} onChange={handleChange} />
-                <label>Time</label>
+                <label><b>Time</b></label>
                 <input type="time" name="time" value={updatedBooking.time} onChange={handleChange} />
-                <label>Customer</label>
+                <label><b>Customer</b></label>
                 <select name="customer" defaultValue={updatedBooking.customer.id} onChange={handleCustomerSelection}>
                     <option disabled value="select-customer">Select Customer</option>
                     {customerOptions}
                 </select>
-                <input type="submit" value="Save" />
+                <input type="submit" value="Save"  />
             </form>
             <div id="duplicate-error" hidden={true}>
                 <p>Sorry, that table conflicts with a previous booking</p>

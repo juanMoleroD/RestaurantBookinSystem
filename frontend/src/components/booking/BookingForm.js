@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Request from "../../helpers/request";
 import DuplicateChecker from "../../helpers/duplicateChecker";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
 
 const BookingForm = ({ customers, bookings }) => {
 
@@ -49,19 +51,20 @@ const BookingForm = ({ customers, bookings }) => {
 
     return (!customers) ? null : (
         <>
-            <form onSubmit={handleSubmit}>
-                <label>Table Number</label>
+        <h2 className="title">Add Booking<FontAwesomeIcon icon={faCalendarPlus} className="icon" /></h2>
+            <form onSubmit={handleSubmit} className="form">
+                <label><b>Table Number</b></label>
                 <input type="number" name="tableNumber" value={newBooking.tableNumber} onChange={handleChange} required />
-                <label>Date</label>
+                <label><b>Date</b></label>
                 <input type="date" name="date" value={newBooking.date} onChange={handleChange} required />
-                <label>Time</label>
+                <label><b>Time</b></label>
                 <input type="time" name="time" value={newBooking.time} onChange={handleChange} required />
-                <label>Customer</label>
+                <label><b>Customer</b></label>
                 <select name="customer" defaultValue={"select-customer"} onChange={handleCustomerSelection}>
                     <option disabled value="select-customer">Select Customer</option>
                     {customerOptions}
                 </select>
-                <input type="submit" value="Save" />
+                <button type="submit"> Save </button>
             </form>
             <div id="duplicate-error" hidden={true}>
                 <p>Sorry, that table conflicts with a previous booking</p>

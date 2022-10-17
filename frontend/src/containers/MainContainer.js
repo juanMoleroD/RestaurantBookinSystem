@@ -4,6 +4,8 @@ import NavBar from "../NavBar";
 import Request from "../helpers/request";
 import BookingContainer from "./BookingContainer";
 import CustomerContainer from "./CustomerContainer";
+import ErrorPage from "./ErrorPage";
+import HomePage from "./HomePage";
 
 const MainContainer = () => {
 
@@ -68,8 +70,10 @@ const MainContainer = () => {
         <React.Fragment>
             <NavBar />
             <Routes>
+                <Route path="/home" element={<HomePage />} />
                 <Route path="/bookings/*" element={<BookingContainer bookings={bookings} deleteBooking={deleteBooking} customers={customers}/>} />
                 <Route path="/customers/*" element={<CustomerContainer customers={customers} deleteCustomer={deleteCustomer}/>} />
+                <Route path="*" element={<ErrorPage />} />
             </Routes>
         </React.Fragment>
     )
