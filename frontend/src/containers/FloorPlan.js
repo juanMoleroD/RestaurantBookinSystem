@@ -4,11 +4,7 @@ import './FloorPlan.css'
 
 const FloorPlan = ({ filteredBookings, handleTableClick}) => {
 
-    let a = function () {
-
-    }
     const handleClick = (event) => {
-        console.log(event.target)
         handleTableClick(event.target.value)
     }
 
@@ -31,11 +27,11 @@ const FloorPlan = ({ filteredBookings, handleTableClick}) => {
                             {
                                 (filteredBookings.includes(1)) ? 
                                     <td className="occupied">
-                                        <button className="table-occupied" ><b>Table 1</b></button>
+                                        <button className="table-occupied" >Table 1</button>
                                     </td>                      
                                  : 
                                     <td className="free">
-                                        <button className="table-free" value="1" onClick={handleClick} ><b>Table 1</b></button>
+                                        <button className="table-free" value="1" onClick={handleClick} >Table 1</button>
                                     </td>
                             }
 
@@ -43,11 +39,11 @@ const FloorPlan = ({ filteredBookings, handleTableClick}) => {
                             {
                                 (filteredBookings.includes(2)) ? 
                                     <td className="occupied">
-                                        <button className="table-occupied" ><b>Table 2</b></button>
+                                        <button className="table-occupied" >Table 2</button>
                                     </td>
                                  : 
                                     <td className="free">
-                                        <button className="table-free" value="2" onClick={handleClick} ><b>Table 2</b></button>
+                                        <button className="table-free" value="2" onClick={handleClick} >Table 2</button>
                                     </td>
                             }
                             <td className="empty"></td>
@@ -68,23 +64,23 @@ const FloorPlan = ({ filteredBookings, handleTableClick}) => {
                             {
                                 (filteredBookings.includes(3)) ? 
                                     <td className="occupied">
-                                        <button className="table-occupied" ><b>Table 3</b></button>
+                                        <button className="table-occupied" >Table 3</button>
                                     </td>
                                  : 
                                     <td className="free">
-                                        <button className="table-free" value="3" onClick={handleClick} ><b>Table 3</b></button>
+                                        <button className="table-free" value="3" onClick={handleClick} >Table 3</button>
                                     </td>
                             }
                             <td className="empty"></td>
                             {
                                 (filteredBookings.includes(4)) ? 
                                     <td className="occupied">
-                                        <button className="table-occupied" ><b>Table 4</b></button>
+                                        <button className="table-occupied" >Table 4</button>
                                     </td>
 
                                  : 
                                     <td className="free">
-                                        <button className="table-free" value="4" onClick={handleClick} ><b>Table 4</b></button>
+                                        <button className="table-free" value="4" onClick={handleClick} >Table 4</button>
                                     </td>
                                 
 
@@ -105,8 +101,6 @@ const FloorPlan = ({ filteredBookings, handleTableClick}) => {
             </section>
         </>
     )
-
-
 }
 
 

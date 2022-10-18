@@ -25,7 +25,6 @@ const CustomerForm = ({updateCustomers}) => {
                 setCustomer({name: ""})
                 updateCustomers();
             })
-            // .then(() => window.location = '/customers')
         
     }
 
