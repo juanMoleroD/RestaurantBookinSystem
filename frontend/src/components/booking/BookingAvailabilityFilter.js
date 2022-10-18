@@ -12,7 +12,6 @@ const BookingAvailabilityFilter = ({bookings, newBooking, setNewBooking, handleF
 
     const handleFilter = (event) => {
         event.preventDefault();
-
         handleFilterSubmit()
     }
 

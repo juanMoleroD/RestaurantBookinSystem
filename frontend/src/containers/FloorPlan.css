@@ -10,6 +10,7 @@
     height: 100px;
     background-color: yellowgreen;
     border-radius: 8px;
+    font-weight: bold;
 }
 
 .free{
@@ -25,6 +26,7 @@
     height: 100px;
     background-color: red;
     border-radius: 8px;
+    font-weight: bold;
 }
 
 .occupied{
@@ -50,7 +52,7 @@
 .home-filter{
     display: flex;
     justify-content: center;
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 .add-booking{

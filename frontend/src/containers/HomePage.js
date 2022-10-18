@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import FloorPlan from "./FloorPlan";
 import BookingAvailabilityFilter from "../components/booking/BookingAvailabilityFilter";
 import CustomerForm from "../components/customer/CustomerForm";
@@ -6,7 +6,7 @@ import Request from "../helpers/request";
 
 
 
-const HomePage = ({bookings, customers, updateCustomersAndBookings}) => {
+const HomePage = ({ bookings, customers, updateCustomersAndBookings }) => {
 
     const [filteredBookings, setFilteredBookings] = useState([]);
 
@@ -14,17 +14,22 @@ const HomePage = ({bookings, customers, updateCustomersAndBookings}) => {
         tableNumber: "",
         date: "",
         time: "",
-        customer:  null
+        customer: null
     })
 
     useEffect(() => {
         customerOptions = updateCustomerOptions();
     }, [customers])
 
+    useEffect(() => {
+        handleFilterSubmit();
+    }, [bookings])
+
     const handleFilterSubmit = () => {
+        setFilteredBookings([]);
         const searchResults = bookings.filter(booking => {
-            return (booking.date == newBooking.date 
-                    && checkTables(booking))
+            return (booking.date == newBooking.date
+                && checkTables(booking))
         }).map(booking => booking.tableNumber);
         setFilteredBookings(searchResults);
     }
@@ -41,19 +46,19 @@ const HomePage = ({bookings, customers, updateCustomersAndBookings}) => {
         const existingBookingInDateFormatPlusTwoHours = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...existingBooking.time.split(":"));
         existingBookingInDateFormatPlusTwoHours.setHours(existingBookingInDateFormatPlusTwoHours.getHours() + 2);
 
-        if (existingBookingInDateFormat <= bookingToCheckInDateFormat 
+        if (existingBookingInDateFormat <= bookingToCheckInDateFormat
             && bookingToCheckInDateFormat < existingBookingInDateFormatPlusTwoHours) result = true;
-        if (existingBookingInDateFormat <= bookingToCheckInDateFormatPlusTwoHours 
+        if (existingBookingInDateFormat <= bookingToCheckInDateFormatPlusTwoHours
             && bookingToCheckInDateFormatPlusTwoHours < existingBookingInDateFormatPlusTwoHours) result = true;
         return result;
     }
 
     const handleTableClick = (tableNumber) => {
-        const copyOfNewBooking = {... newBooking};
+        const copyOfNewBooking = { ...newBooking };
         copyOfNewBooking.tableNumber = parseInt(tableNumber);
         setNewBooking(copyOfNewBooking);
     }
-    
+
     const updateCustomerOptions = () => {
         return customers.map((customer, index) => {
             return <option value={index} key={index}>{customer.name}</option>
@@ -74,31 +79,26 @@ const HomePage = ({bookings, customers, updateCustomersAndBookings}) => {
             request.post('/api/bookings', newBooking)
                 .then(() => {
                     updateCustomersAndBookings();
-                    handleFilterSubmit();
                 })
         } else {
             console.log("add missing data")
         }
-
     }
 
     return (
 
         <div className="home">
-            <BookingAvailabilityFilter bookings={bookings} newBooking={newBooking} setNewBooking={setNewBooking} handleFilterSubmit={handleFilterSubmit}/>
+            <BookingAvailabilityFilter bookings={bookings} newBooking={newBooking} setNewBooking={setNewBooking} handleFilterSubmit={handleFilterSubmit} />
             <div className="home-filter">
-            
-            <select name="customer" defaultValue={"select-customer"} onChange={handleCustomerSelection}>
-                <option disabled value="select-customer">Select Customer</option>
+
+                <select name="customer" defaultValue={"select-customer"} onChange={handleCustomerSelection}>
+                    <option disabled value="select-customer">Select Customer</option>
                     {customerOptions}
-            </select>
-            <button className="add-booking" onClick={handleSubmit}>Add Booking</button>
+                </select>
+                <button className="add-booking" onClick={handleSubmit}>Add Booking</button>
             </div>
-        
-            
-            
-            <FloorPlan filteredBookings={filteredBookings} handleTableClick={handleTableClick}/>
-            <CustomerForm updateCustomers={updateCustomersAndBookings}/>
+            <FloorPlan filteredBookings={filteredBookings} handleTableClick={handleTableClick} />
+            <CustomerForm updateCustomers={updateCustomersAndBookings} />
         </div>
     )
 }
