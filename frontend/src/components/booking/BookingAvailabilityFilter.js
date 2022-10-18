@@ -1,30 +1,33 @@
 import React, {useState} from "react";
 
-const BookingAvailabilityFilter = ({bookings}) => {
+const BookingAvailabilityFilter = ({bookings, newBooking, setNewBooking, handleFilterSubmit}) => {
 
-    const [filter, setFilter] = useState({
-        filterDate: "",
-        filterTime: ""
-    });
-
+    
     const handleChange = (event) => {
-        const propertyName = event.target.name
-        const copyOfFilter = {... filter}
-        copyOfFilter[propertyName] = event.target.value
-        setFilter(copyOfFilter);
+        const propertyName = event.target.name;
+        const copyOfNewBooking = {... newBooking};
+        copyOfNewBooking[propertyName] = event.target.value;
+        setNewBooking(copyOfNewBooking);
+    }
+
+    const handleFilter = (event) => {
+        event.preventDefault();
+
+        handleFilterSubmit()
     }
 
     return(
-        <>
-            <form className="form" >
-                <label>Date</label>
-                <input type="date" name="filterDate" value={filter.filterDate} onChange={handleChange} required/>
-                <label>Between</label>
-                <input type="time" name="filterTime" value={filter.filterTime} onChange={handleChange} />
+        <div>
+        <br></br>
+            <form className="form" onSubmit={handleFilter}>
+                <label><b>Date</b></label>
+                <input type="date" name="date" value={newBooking.date} onChange={handleChange} required/>
+                <label><b>Time</b></label>
+                <input type="time" name="time" value={newBooking.time} onChange={handleChange} />
                 <button type="submit">Filter</button>
                 <button >Clear</button>
             </form>
-        </>
+        </div>
     )
 }
 

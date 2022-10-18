@@ -1,98 +1,103 @@
-import React from "react";
+import React, { useState } from "react";
 import './FloorPlan.css'
-import CustomerForm from "../components/customer/CustomerForm";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTableColumns  } from '@fortawesome/free-solid-svg-icons';
 
 
-const FloorPlan = () => {
+const FloorPlan = ({ filteredBookings, handleTableClick}) => {
 
+    let a = function () {
 
-
-
-
-
-
-
+    }
+    const handleClick = (event) => {
+        console.log(event.target)
+        handleTableClick(event.target.value)
+    }
 
 
     return (
         <>
+            <section>
+                <table className="floor-plan">
+                    <tbody>
+                        <tr className="empty-row">
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                        </tr>
 
-        
-        <section>
-        {/* <h2 className="title">Floor Plan<FontAwesomeIcon icon={faTableColumns} className="icon" /></h2> */}
-            <table className="floor-plan">
-                <tbody>
+                        <tr>
+                            <td className="empty"></td>
+                            {
+                                (filteredBookings.includes(1)) ? 
+                                    <td className="table-occupied">
+                                        <button className="dinamic" ><b>Table 1</b></button>
+                                    </td>
+                                 : 
+                                    <td className="table">
+                                        <button className="dinamic" value="1" onClick={handleClick} ><b>Table 1</b></button>
+                                    </td>
+                            }
 
-                    <tr className="empty-row">
-                        <td className="empty"></td>
-                        <td className="empty"></td>
-                        <td className="empty"></td>
-                        <td className="empty"></td>
-                        <td className="empty"></td>
+                            <td className="empty"></td>
+                            {
+                                (filteredBookings.includes(2)) ? 
+                                    <td className="table-occupied">
+                                        <button className="dinamic" ><b>Table 2</b></button>
+                                    </td>
+                                 : 
+                                    <td className="table">
+                                        <button className="dinamic" value="2" onClick={handleClick} ><b>Table 2</b></button>
+                                    </td>
+                            }
+                            <td className="empty"></td>
+                        </tr>
 
-                    </tr>
+                        <tr className="empty-row">
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                        </tr>
 
-                    <tr>
-                        <td className="empty">
+                        <tr>
+                            <td className="empty"></td>
+                            {
+                                (filteredBookings.includes(3)) ? 
+                                    <td className="table-occupied">
+                                        <button className="dinamic" ><b>Table 3</b></button>
+                                    </td>
+                                 : 
+                                    <td className="table">
+                                        <button className="dinamic" value="3" onClick={handleClick} ><b>Table 3</b></button>
+                                    </td>
+                            }
+                            <td className="empty"></td>
+                            {
+                                (filteredBookings.includes(4)) ? 
+                                    <td className="table-occupied">
+                                        <button className="dinamic" ><b>Table 4</b></button>
+                                    </td>
+                                 : 
+                                    <td className="table">
+                                        <button className="dinamic" value="4" onClick={handleClick} ><b>Table 4</b></button>
+                                    </td>
+                            }
+                            <td className="empty"></td>
+                        </tr>
 
-                        </td>
-                        <td className="table">
-                            <button className="dinamic">Table 1</button>
-                        </td>
-                        <td className="empty">
-
-                        </td>
-                        <td className="table">
-                        <button className="dinamic">Table 2</button>
-                        </td>
-                        <td className="empty">
-
-                        </td>
-                    </tr>
-
-                    <tr className="empty-row">
-                        <td className="empty"></td>
-                        <td className="empty"></td>
-                        <td className="empty"></td>
-                        <td className="empty"></td>
-                        <td className="empty"></td>
-                    </tr>
-
-                    <tr>
-                        <td className="empty">
-
-                        </td>
-                        <td className="table">
-                        <button className="dinamic">Table 3</button>
-                        </td>
-                        <td className="empty">
-
-                        </td>
-                        <td className="table">
-                        <button className="dinamic">Table 4</button>
-                        </td>
-                        <td className="empty">
-
-                        </td>
-                    </tr>
-
-                    <tr className="empty-row">
-                        <td className="empty"></td>
-                        <td className="empty"></td>
-                        <td className="empty"></td>
-                        <td className="empty"></td>
-                        <td className="empty"></td>
-                    </tr>
-
-                </tbody>
-            </table>
-
-        </section>
-        <CustomerForm/>
+                        <tr className="empty-row">
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
         </>
-
     )
 
 

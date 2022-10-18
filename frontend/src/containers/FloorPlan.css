@@ -1,23 +1,33 @@
 .empty{
     width: 100px;
     height: 100px;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.491);
+    border-radius: 8px;
 }
 
 .table{
     width: 100px;
     height: 100px;
-    background-color: #EFF2F1;
+    background-color: yellowgreen;
+    border-radius: 8px;
+}
+
+.table-occupied{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 8px;
 }
 
 .floor-plan{
     display: flex;
     justify-content: center;
-    margin-top: 90px;
+    margin-top: 40px;
 }
 
 .dinamic{
     width: 100px;
     height: 100px;
     background-color: #EFF2F1;
+    border-radius: 8px;
 }
