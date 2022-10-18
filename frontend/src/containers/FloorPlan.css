@@ -5,14 +5,29 @@
     border-radius: 8px;
 }
 
-.table{
+.table-free{
     width: 100px;
     height: 100px;
     background-color: yellowgreen;
     border-radius: 8px;
 }
 
+.free{
+    width: 100px;
+    height: 100px;
+    background-color: yellowgreen;
+    border-radius: 8px;
+
+}
+
 .table-occupied{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 8px;
+}
+
+.occupied{
     width: 100px;
     height: 100px;
     background-color: red;
@@ -30,4 +45,14 @@
     height: 100px;
     background-color: #EFF2F1;
     border-radius: 8px;
+}
+
+.home-filter{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.add-booking{
+    margin-left: 20px;
 }

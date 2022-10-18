@@ -30,24 +30,24 @@ const FloorPlan = ({ filteredBookings, handleTableClick}) => {
                             <td className="empty"></td>
                             {
                                 (filteredBookings.includes(1)) ? 
-                                    <td className="table-occupied">
-                                        <button className="dinamic" ><b>Table 1</b></button>
-                                    </td>
+                                    <td className="occupied">
+                                        <button className="table-occupied" ><b>Table 1</b></button>
+                                    </td>                      
                                  : 
-                                    <td className="table">
-                                        <button className="dinamic" value="1" onClick={handleClick} ><b>Table 1</b></button>
+                                    <td className="free">
+                                        <button className="table-free" value="1" onClick={handleClick} ><b>Table 1</b></button>
                                     </td>
                             }
 
                             <td className="empty"></td>
                             {
                                 (filteredBookings.includes(2)) ? 
-                                    <td className="table-occupied">
-                                        <button className="dinamic" ><b>Table 2</b></button>
+                                    <td className="occupied">
+                                        <button className="table-occupied" ><b>Table 2</b></button>
                                     </td>
                                  : 
-                                    <td className="table">
-                                        <button className="dinamic" value="2" onClick={handleClick} ><b>Table 2</b></button>
+                                    <td className="free">
+                                        <button className="table-free" value="2" onClick={handleClick} ><b>Table 2</b></button>
                                     </td>
                             }
                             <td className="empty"></td>
@@ -63,26 +63,32 @@ const FloorPlan = ({ filteredBookings, handleTableClick}) => {
 
                         <tr>
                             <td className="empty"></td>
+            
+                            
                             {
                                 (filteredBookings.includes(3)) ? 
-                                    <td className="table-occupied">
-                                        <button className="dinamic" ><b>Table 3</b></button>
+                                    <td className="occupied">
+                                        <button className="table-occupied" ><b>Table 3</b></button>
                                     </td>
                                  : 
-                                    <td className="table">
-                                        <button className="dinamic" value="3" onClick={handleClick} ><b>Table 3</b></button>
+                                    <td className="free">
+                                        <button className="table-free" value="3" onClick={handleClick} ><b>Table 3</b></button>
                                     </td>
                             }
                             <td className="empty"></td>
                             {
                                 (filteredBookings.includes(4)) ? 
-                                    <td className="table-occupied">
-                                        <button className="dinamic" ><b>Table 4</b></button>
+                                    <td className="occupied">
+                                        <button className="table-occupied" ><b>Table 4</b></button>
                                     </td>
+
                                  : 
-                                    <td className="table">
-                                        <button className="dinamic" value="4" onClick={handleClick} ><b>Table 4</b></button>
+                                    <td className="free">
+                                        <button className="table-free" value="4" onClick={handleClick} ><b>Table 4</b></button>
                                     </td>
+                                
+
+                                
                             }
                             <td className="empty"></td>
                         </tr>

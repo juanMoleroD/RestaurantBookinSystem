@@ -86,12 +86,17 @@ const HomePage = ({bookings, customers, updateCustomersAndBookings}) => {
 
         <div className="home">
             <BookingAvailabilityFilter bookings={bookings} newBooking={newBooking} setNewBooking={setNewBooking} handleFilterSubmit={handleFilterSubmit}/>
-            <label>Select customer: </label>
+            <div className="home-filter">
+            
             <select name="customer" defaultValue={"select-customer"} onChange={handleCustomerSelection}>
                 <option disabled value="select-customer">Select Customer</option>
                     {customerOptions}
             </select>
-            <button onClick={handleSubmit}>Submit</button>
+            <button className="add-booking" onClick={handleSubmit}>Add Booking</button>
+            </div>
+        
+            
+            
             <FloorPlan filteredBookings={filteredBookings} handleTableClick={handleTableClick}/>
             <CustomerForm updateCustomers={updateCustomersAndBookings}/>
         </div>
