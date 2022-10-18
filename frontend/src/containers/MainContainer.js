@@ -26,6 +26,10 @@ const MainContainer = () => {
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
+        getCustomersWithIdAndBookings();
+    }, [])
+
+    const getCustomersWithIdAndBookings = () => {
         const request = new Request();
         request.get('/api/bookings')
         .then (data => setBookings(data));
@@ -47,7 +51,7 @@ const MainContainer = () => {
                         setCustomers(updatedCustomers);
                     });
             });
-    }, [])
+    }
 
     const getBookingCountById = (id) => {
         return fetch('/api/bookings/' + id + '/bookingcount')
@@ -70,7 +74,8 @@ const MainContainer = () => {
         <React.Fragment>
             <NavBar />
             <Routes>
-                <Route path="/home" element={<HomePage />} />
+                <Route path="/home" element={<HomePage bookings={bookings} customers={customers} updateCustomersAndBookings={getCustomersWithIdAndBookings}/>} />
+                <Route path="/" element={<HomePage bookings={bookings}/>} customers={customers} updateCustomersAndBookings={getCustomersWithIdAndBookings}/>
                 <Route path="/bookings/*" element={<BookingContainer bookings={bookings} deleteBooking={deleteBooking} customers={customers}/>} />
                 <Route path="/customers/*" element={<CustomerContainer customers={customers} deleteCustomer={deleteCustomer}/>} />
                 <Route path="*" element={<ErrorPage />} />

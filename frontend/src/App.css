@@ -145,16 +145,26 @@ button:hover{
 
 #duplicate-error {
   margin-top: 40px;
-  border: 1px solid black;
+  border: 1px solid rgb(0, 0, 0);
   border-radius: 8px;
   text-align: center;
   width: 500px;
   background-color: #e0e4e1c2;
 }
 
+.error-container{
+  display: flex;
+  justify-content: center;
+}
+
 .text-box{
   display: flex;
   justify-content: center;
 
+}
+
+
+.home{
+  padding-top: 50px;
 }
 

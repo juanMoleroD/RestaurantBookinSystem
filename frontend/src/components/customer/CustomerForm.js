@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 
-const CustomerForm = () => {
+const CustomerForm = ({updateCustomers}) => {
 
     const [customer, setCustomer] = useState({
         name: ""
@@ -21,7 +21,12 @@ const CustomerForm = () => {
         event.preventDefault();
         const request = new Request();
         request.post('/api/customers', customer)
-            .then(() => window.location = '/customers')
+            .then(() => {
+                setCustomer({name: ""})
+                updateCustomers();
+            })
+            // .then(() => window.location = '/customers')
+        
     }
 
     return (
