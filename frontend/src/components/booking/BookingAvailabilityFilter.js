@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const BookingAvailabilityFilter = ({bookings, newBooking, setNewBooking, handleFilterSubmit}) => {
+const BookingAvailabilityFilter = ({newBooking, setNewBooking, handleFilterSubmit, handleClear}) => {
 
     
     const handleChange = (event) => {
@@ -24,7 +24,7 @@ const BookingAvailabilityFilter = ({bookings, newBooking, setNewBooking, handleF
                 <label><b>Time</b></label>
                 <input type="time" name="time" value={newBooking.time} onChange={handleChange} />
                 <button type="submit">Filter</button>
-                <button >Clear</button>
+                <button onClick={handleClear}>Clear</button>
             </form>
         </div>
     )
