@@ -35,6 +35,17 @@ const HomePage = ({ bookings, customers, updateCustomersAndBookings }) => {
         setFilteredBookings(searchResults);
     }
 
+    const handleClear = (event) => {
+        event.preventDefault();
+        setNewBooking({
+            tableNumber: "",
+            date: "",
+            time: "",
+            customer: null
+        });
+        setFilteredBookings([]);
+    }
+
     const checkTables = (existingBooking) => {
         let result = false;
         let now = new Date();
@@ -94,7 +105,7 @@ const HomePage = ({ bookings, customers, updateCustomersAndBookings }) => {
     return (
 
         <div className="home">
-            <BookingAvailabilityFilter bookings={bookings} newBooking={newBooking} setNewBooking={setNewBooking} handleFilterSubmit={handleFilterSubmit} />
+            <BookingAvailabilityFilter bookings={bookings} newBooking={newBooking} setNewBooking={setNewBooking} handleFilterSubmit={handleFilterSubmit} handleClear={handleClear}/>
             <div className="home-filter">
                 { !customers ? null :
                      <select name="customer" defaultValue={"select-customer"} onChange={handleCustomerSelection}>
