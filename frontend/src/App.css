@@ -50,9 +50,9 @@
 }
 
 .nav-text:link, .nav-text:visited {
-  background-color: #EFF2F1;
+  background-color: rgba(0, 0, 0, 0.59);
   border-radius: 8px;
-  color: black;
+  color: #EFF2F1;
   padding: 8px 18px;
   text-align: center;
   text-decoration: none;
@@ -61,7 +61,7 @@
 
 .styled-table {
 
-  background: #EFF2F1;
+  background: #eff2f1be;
   margin: 25px 35px;
   font-size: 0.9em;
   font-family: sans-serif;
@@ -94,7 +94,7 @@ a:hover{
   opacity:1;
   filter:blur(0);
   text-decoration:none;
-  color:#fff;
+  color:#EFF2F1;
 }
 .trash-icon{
   border-radius: 8px;
@@ -134,7 +134,7 @@ button:hover{
   opacity:1;
   filter:blur(0);
   text-decoration:none;
-  color:white;
+  
 }
 
 .title{
@@ -171,11 +171,13 @@ button:hover{
 
 input {
   border: 1px solid #6f533e;
+  background-color: rgba(255, 255, 255, 0.735);
   border-radius: 6px;
 }
 
 select{
   border: 1px solid #6f533e;
+  background-color: rgba(255, 255, 255, 0.735);
   border-radius: 6px;
 }
 
