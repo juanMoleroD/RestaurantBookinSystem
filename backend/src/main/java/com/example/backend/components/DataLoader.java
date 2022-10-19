@@ -27,12 +27,12 @@ public class DataLoader {
     public void setup() {
         Customer customer1 = new Customer();
         customer1.setBookings(new ArrayList<>());
-        customer1.setName("Juan");
+        customer1.setName("Delia");
         customerRepository.save(customer1);
 
         Customer customer2 = new Customer();
         customer2.setBookings(new ArrayList<>());
-        customer2.setName("Alejandro");
+        customer2.setName("Jaide");
         customerRepository.save(customer2);
 
         Customer customer3 = new Customer();
