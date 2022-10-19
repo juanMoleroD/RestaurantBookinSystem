@@ -1,5 +1,4 @@
 import React from "react";
-import '../booking/booking.css'
 import Request from "../../helpers/request";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';

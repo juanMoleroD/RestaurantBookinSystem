@@ -3,10 +3,16 @@
   display:flex;
   justify-content: space-between;
   color: white;
+  
 }
 
 #main-navbar > h1 {
   padding: 10px;
+  font-family: 'Raleway Dots', cursive;
+  color: black;
+  font-size: 28px;
+
+  
 }
 
 .ul-navbar {
@@ -17,7 +23,7 @@
 }
 
 #main-navbar > ul > li{
-
+  
   padding: 15px;
 }
 
@@ -44,9 +50,9 @@
 }
 
 .nav-text:link, .nav-text:visited {
-  background-color: #EFF2F1;
+  background-color: rgba(0, 0, 0, 0.59);
   border-radius: 8px;
-  color: black;
+  color: #EFF2F1;
   padding: 8px 18px;
   text-align: center;
   text-decoration: none;
@@ -54,8 +60,9 @@
 }
 
 .styled-table {
-  background: #EFF2F1;
-  margin: 25px 0;
+
+  background: #eff2f1be;
+  margin: 25px 35px;
   font-size: 0.9em;
   font-family: sans-serif;
   min-width: -webkit-fill-available;
@@ -76,6 +83,7 @@ a:link, a:visited{
   background-color: #a4c4c5;
   border-radius: 8px;
   color: black;
+  border: 1px black solid;
   padding: 3px 8px;
   text-align: center;
   text-decoration: none;
@@ -86,7 +94,7 @@ a:hover{
   opacity:1;
   filter:blur(0);
   text-decoration:none;
-  color:#fff;
+  color:#EFF2F1;
 }
 .trash-icon{
   border-radius: 8px;
@@ -95,6 +103,7 @@ a:hover{
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  border-width: 1px;
 }
 
 .trash-icon:hover{
@@ -120,6 +129,13 @@ button{
   text-decoration: none;
   display: inline-block;
 }
+button:hover{
+  transform:scale(1.1);
+  opacity:1;
+  filter:blur(0);
+  text-decoration:none;
+  
+}
 
 .title{
   text-align: center;
@@ -133,7 +149,37 @@ button{
   margin-left: 15px;
 }
 
+#duplicate-error {
+  margin-top: 40px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 8px;
+  text-align: center;
+  width: 500px;
+  background-color: #e0e4e1c2;
+}
+
+.error-container{
+  display: flex;
+  justify-content: center;
+}
+
+.text-box{
+  display: flex;
+  justify-content: center;
+
+}
+
+input {
+  border: 1px solid #6f533e;
+  background-color: rgba(255, 255, 255, 0.735);
+  border-radius: 6px;
+}
 
 
+select{
+  border: 1px solid #6f533e;
+  background-color: rgba(255, 255, 255, 0.735);
+  border-radius: 6px;
+}
 
 

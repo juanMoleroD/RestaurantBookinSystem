@@ -66,9 +66,12 @@ const BookingForm = ({ customers, bookings }) => {
                 </select>
                 <button type="submit"> Save </button>
             </form>
+            <div className="error-container">
             <div id="duplicate-error" hidden={true}>
                 <p>Sorry, that table conflicts with a previous booking</p>
             </div>
+            </div>
+           
         </>
     )
 }

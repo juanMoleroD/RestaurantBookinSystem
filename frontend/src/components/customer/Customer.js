@@ -19,7 +19,7 @@ const Customer = ({ customer, deleteCustomer }) => {
                 <td>{customer.id}</td>
                 <td>{customer.name}</td>
                 <td>{customer.bookingCount}</td>
-                <td><button><a href={'/customers/' + customer.id + '/edit'} >Update</a></button></td>
+                <td><a href={'/customers/' + customer.id + '/edit'} >Update</a></td>
                 <td><button onClick={handleDelete} className="trash-icon"><FontAwesomeIcon icon={faTrash} /></button></td>
             </tr>
         </>

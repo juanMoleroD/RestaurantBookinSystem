@@ -60,21 +60,24 @@ const BookingUpdate = ({ customers, bookings }) => {
              <h2 className="title">Update Booking<FontAwesomeIcon icon={faPenToSquare} className="icon" /></h2>
             <form onSubmit={handleSubmit} className="form">
                 <label><b>Table Number</b></label>
-                <input type="number" name="tableNumber" value={updatedBooking.tableNumber} onChange={handleChange} />
+                <input type="number" name="tableNumber" value={updatedBooking.tableNumber} onChange={handleChange} required/>
                 <label><b>Date</b></label>
-                <input type="date" name="date" value={updatedBooking.date} onChange={handleChange} />
+                <input type="date" name="date" value={updatedBooking.date} onChange={handleChange} required/>
                 <label><b>Time</b></label>
-                <input type="time" name="time" value={updatedBooking.time} onChange={handleChange} />
+                <input type="time" name="time" value={updatedBooking.time} onChange={handleChange} required/>
                 <label><b>Customer</b></label>
-                <select name="customer" defaultValue={updatedBooking.customer.id} onChange={handleCustomerSelection}>
+                <select name="customer" defaultValue={updatedBooking.customer.id} onChange={handleCustomerSelection} required>
                     <option disabled value="select-customer">Select Customer</option>
                     {customerOptions}
                 </select>
                 <input type="submit" value="Save"  />
             </form>
-            <div id="duplicate-error" hidden={true}>
-                <p>Sorry, that table conflicts with a previous booking</p>
+            <section className="text-box">
+            <div id="duplicate-error" hidden={true}> 
+                <p><b>Sorry, that table conflicts with a previous booking</b></p>
             </div>
+            </section>
+          
         </>
     )
 

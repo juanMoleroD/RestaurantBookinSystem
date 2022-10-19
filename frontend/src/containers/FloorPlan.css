@@ -1,0 +1,64 @@
+.empty{
+    width: 100px;
+    height: 100px;
+    background-color: #687d84ac;
+    border-radius: 8px;
+}
+
+.table-free{
+    width: 100px;
+    height: 100px;
+    background-color: yellowgreen;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.free{
+    width: 100px;
+    height: 100px;
+    background-color: yellowgreen;
+    border-radius: 8px;
+
+}
+
+.table-occupied{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.occupied{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 8px;
+}
+
+.floor-plan{
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.dinamic{
+    width: 100px;
+    height: 100px;
+    background-color: #EFF2F1;
+    border-radius: 8px;
+}
+
+.home-filter{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.add-booking{
+    margin-left: 20px;
+}
+
+.home{
+    padding-top: 20px;
+  }
