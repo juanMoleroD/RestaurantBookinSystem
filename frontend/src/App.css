@@ -3,10 +3,16 @@
   display:flex;
   justify-content: space-between;
   color: white;
+  
 }
 
 #main-navbar > h1 {
   padding: 10px;
+  font-family: 'Raleway Dots', cursive;
+  color: black;
+  font-size: 28px;
+
+  
 }
 
 .ul-navbar {
@@ -17,7 +23,7 @@
 }
 
 #main-navbar > ul > li{
-
+  
   padding: 15px;
 }
 
@@ -163,8 +169,14 @@ button:hover{
 
 }
 
-
-.home{
-  padding-top: 50px;
+input {
+  border: 1px solid #6f533e;
+  border-radius: 6px;
 }
+
+select{
+  border: 1px solid #6f533e;
+  border-radius: 6px;
+}
+
 

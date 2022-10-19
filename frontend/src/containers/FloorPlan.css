@@ -1,7 +1,7 @@
 .empty{
     width: 100px;
     height: 100px;
-    background-color: rgba(0, 0, 0, 0.491);
+    background-color: #687d84ac;
     border-radius: 8px;
 }
 
@@ -39,7 +39,7 @@
 .floor-plan{
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 32px;
 }
 
 .dinamic{
@@ -58,3 +58,7 @@
 .add-booking{
     margin-left: 20px;
 }
+
+.home{
+    padding-top: 20px;
+  }
