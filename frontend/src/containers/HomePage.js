@@ -3,6 +3,7 @@ import FloorPlan from "./FloorPlan";
 import BookingAvailabilityFilter from "../components/booking/BookingAvailabilityFilter";
 import CustomerForm from "../components/customer/CustomerForm";
 import Request from "../helpers/request";
+import DuplicateChecker from "../helpers/duplicateChecker";
 
 
 
@@ -75,13 +76,18 @@ const HomePage = ({ bookings, customers, updateCustomersAndBookings }) => {
 
     const handleSubmit = (event) => {
         if (newBooking.tableNumber !== "" && newBooking.date !== "" && newBooking.time !== "" && newBooking.customer !== null) {
-            const request = new Request();
-            request.post('/api/bookings', newBooking)
-                .then(() => {
-                    updateCustomersAndBookings();
-                })
+            const checker = new DuplicateChecker();
+            if (checker.noDuplicatesExists(bookings, newBooking)) {
+                const request = new Request();
+                request.post('/api/bookings', newBooking)
+                    .then(() => {
+                        updateCustomersAndBookings();
+                    });
+            } else {
+                window.alert("Conflict Booking")
+            }
         } else {
-            console.log("add missing data")
+            window.alert("Missing Data");
         }
     }
 
@@ -90,11 +96,13 @@ const HomePage = ({ bookings, customers, updateCustomersAndBookings }) => {
         <div className="home">
             <BookingAvailabilityFilter bookings={bookings} newBooking={newBooking} setNewBooking={setNewBooking} handleFilterSubmit={handleFilterSubmit} />
             <div className="home-filter">
-
-                <select name="customer" defaultValue={"select-customer"} onChange={handleCustomerSelection}>
-                    <option disabled value="select-customer">Select Customer</option>
-                    {customerOptions}
-                </select>
+                { !customers ? null :
+                     <select name="customer" defaultValue={"select-customer"} onChange={handleCustomerSelection}>
+                         <option disabled value="select-customer">Select Customer</option>
+                        {customerOptions}
+                     </select>
+                }
+               
                 <button className="add-booking" onClick={handleSubmit}>Add Booking</button>
             </div>
             <FloorPlan filteredBookings={filteredBookings} handleTableClick={handleTableClick} />
