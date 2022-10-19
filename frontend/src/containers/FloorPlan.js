@@ -20,6 +20,12 @@ const FloorPlan = ({ filteredBookings, handleTableClick}) => {
                             <td className="empty"></td>
                             <td className="empty"></td>
                             <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            
+                            
                         </tr>
 
                         <tr>
@@ -47,29 +53,19 @@ const FloorPlan = ({ filteredBookings, handleTableClick}) => {
                                     </td>
                             }
                             <td className="empty"></td>
-                        </tr>
-
-                        <tr className="empty-row">
-                            <td className="empty"></td>
-                            <td className="empty"></td>
-                            <td className="empty"></td>
-                            <td className="empty"></td>
-                            <td className="empty"></td>
-                        </tr>
-
-                        <tr>
-                            <td className="empty"></td>
-            
-                            
                             {
                                 (filteredBookings.includes(3)) ? 
                                     <td className="occupied">
                                         <button className="table-occupied" >Table 3</button>
                                     </td>
+
                                  : 
                                     <td className="free">
                                         <button className="table-free" value="3" onClick={handleClick} >Table 3</button>
                                     </td>
+                                
+
+                                
                             }
                             <td className="empty"></td>
                             {
@@ -87,6 +83,7 @@ const FloorPlan = ({ filteredBookings, handleTableClick}) => {
                                 
                             }
                             <td className="empty"></td>
+                            
                         </tr>
 
                         <tr className="empty-row">
@@ -95,6 +92,87 @@ const FloorPlan = ({ filteredBookings, handleTableClick}) => {
                             <td className="empty"></td>
                             <td className="empty"></td>
                             <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            
+                        </tr>
+
+                        <tr>
+                            <td className="empty"></td>
+            
+                            
+                            {
+                                (filteredBookings.includes(5)) ? 
+                                    <td className="occupied">
+                                        <button className="table-occupied" >Table 5</button>
+                                    </td>
+                                 : 
+                                    <td className="free">
+                                        <button className="table-free" value="5" onClick={handleClick} >Table 5</button>
+                                    </td>
+                            }
+                            <td className="empty"></td>
+                            {
+                                (filteredBookings.includes(6)) ? 
+                                    <td className="occupied">
+                                        <button className="table-occupied" >Table 6</button>
+                                    </td>
+
+                                 : 
+                                    <td className="free">
+                                        <button className="table-free" value="6" onClick={handleClick} >Table 6</button>
+                                    </td>
+                                
+
+                                
+                            }
+                            <td className="empty"></td>
+                            {
+                                (filteredBookings.includes(7)) ? 
+                                    <td className="occupied">
+                                        <button className="table-occupied" >Table 7</button>
+                                    </td>
+
+                                 : 
+                                    <td className="free">
+                                        <button className="table-free" value="7" onClick={handleClick} >Table 7</button>
+                                    </td>
+                                
+
+                                
+                            }
+                            <td className="empty"></td>
+                            {
+                                (filteredBookings.includes(8)) ? 
+                                    <td className="occupied">
+                                        <button className="table-occupied" >Table 8</button>
+                                    </td>
+
+                                 : 
+                                    <td className="free">
+                                        <button className="table-free" value="8" onClick={handleClick} >Table 8</button>
+                                    </td>
+                                
+
+                                
+                            }
+                            <td className="empty"></td>
+                            
+                        </tr>
+
+                        <tr className="empty-row">
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            <td className="empty"></td>
+                            
                         </tr>
                     </tbody>
                 </table>
