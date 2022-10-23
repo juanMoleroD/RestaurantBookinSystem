@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 
-const CustomerForm = ({updateCustomers}) => {
+const CustomerForm = ({ updateCustomers }) => {
 
     const [customer, setCustomer] = useState({
         name: ""
@@ -22,19 +22,18 @@ const CustomerForm = ({updateCustomers}) => {
         const request = new Request();
         request.post('/api/customers', customer)
             .then(() => {
-                setCustomer({name: ""})
+                setCustomer({ name: "" })
                 updateCustomers();
             })
-        
     }
 
     return (
 
         <div>
-                  <h2 className="title">Add Customer<FontAwesomeIcon icon={faUserPlus} className="icon" /></h2>
+            <h2 className="title">Add Customer<FontAwesomeIcon icon={faUserPlus} className="icon" /></h2>
             <form onSubmit={handleSubmit} className="form">
                 <label><b>Name</b></label>
-                <input type="text" placeholder="Name" name="name" value={customer.name} onChange={onChange} required/>
+                <input type="text" placeholder="Name" name="name" value={customer.name} onChange={onChange} required />
                 <button type="submit"> Save </button>
             </form>
         </div>
